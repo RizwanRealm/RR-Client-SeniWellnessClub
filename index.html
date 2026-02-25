@@ -19,7 +19,7 @@
     <meta property="og:type" content="business.business">
     <meta property="og:title" content="✨ Sen’i Wellness Club | Luxury Wellness & Spa">
     <meta property="og:description" content="Experience holistic healing, relaxation, and mindful living. Visit us in F-10/2 Islamabad.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1200"> 
+    <meta property="og:image" content="https://seniwellness.vercel.app/assets/og-image.jpg"> 
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -61,7 +61,6 @@
     </script>
 
     <style>
-        /* === CORE STABILITY === */
         html { scroll-behavior: smooth; }
         body { 
             background-color: #FDFDFD; color: #4B5343; 
@@ -84,13 +83,13 @@
         ::-webkit-scrollbar-track { background: #FDFDFD; }
         ::-webkit-scrollbar-thumb { background: #E88A9F; border-radius: 4px; }
 
-        /* === NAVBAR ARCHITECTURE === */
         .nav-fixed-layer {
             position: fixed; top: -1px; left: 0; width: 100%; padding-top: 1px;
-            z-index: 2147483647 !important; transform: translate3d(0,0,0);
+            z-index: 2147483649 !important;
+            transform: translate3d(0,0,0);
             backface-visibility: hidden;
-            transition: background-color 0.4s ease, height 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-            will-change: height, background-color;
+            transition: background-color 0.4s ease, height 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+            will-change: height, background-color, backdrop-filter;
         }
 
         .nav-transparent { 
@@ -103,16 +102,18 @@
         .nav-transparent .status-text-open { color: #DBC9B1; } 
 
         .nav-scrolled { 
-            background: rgba(253, 253, 253, 0.95); 
+            background: rgba(253, 253, 253, 0.72); 
             backdrop-filter: blur(20px) saturate(180%); 
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             border-bottom: 1px solid rgba(219, 201, 177, 0.3); 
-            box-shadow: 0 4px 30px rgba(75, 83, 67, 0.05); height: 5.5rem; 
+            box-shadow: 0 4px 30px rgba(75, 83, 67, 0.05); 
+            height: 4.5rem; 
         }
         
         .nav-scrolled .nav-text { color: #4B5343 !important; text-shadow: none; }
         .nav-scrolled .status-text-open { color: #4B5343 !important; }
 
+        /* RESTORED EXACT AESTHETIC BAR LOGO PHYSICS */
         .logo-circle { 
             width: 6rem; height: 6rem; padding: 0.5rem; background: #FDFDFD; border-radius: 9999px; 
             box-shadow: 0 20px 40px -10px rgba(75, 83, 67, 0.2); 
@@ -135,7 +136,7 @@
         }
         .nav-scrolled .brand-ring { transform: scale(0.6); opacity: 0; }
 
-        .dha-text { transition: all 0.5s ease; opacity: 1; transform: translateY(0); max-height: 20px; margin-top: 0.3rem; display: block; }
+        .dha-text { transition: all 0.5s ease; opacity: 1; transform: translateY(0); max-height: 20px; margin-top: 0.2rem; display: block; }
         .nav-scrolled .dha-text { opacity: 0; transform: translateY(-20px); max-height: 0; margin: 0; }
 
         .book-btn-perfect {
@@ -155,9 +156,7 @@
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
-
-        /* === UI ELEMENTS === */
-        .hero-bottom-blend { background: linear-gradient(to bottom, transparent 0%, #FDFDFD 100%); height: 180px; width: 100%; position: absolute; bottom: 0; pointer-events: none; z-index: 10; }
+        
         .hero-text-shadow { text-shadow: 0 4px 30px rgba(0,0,0,0.6); }
         
         .text-liquid-gold { 
@@ -165,16 +164,14 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); 
         }
         
-        .visit-card-notch { mask-image: radial-gradient(circle at 50% 0, transparent 35px, black 36px); -webkit-mask-image: radial-gradient(circle at 50% 0, transparent 35px, black 36px); }
-        
         .tilt-card { transform-style: flat; transition: transform 0.1s ease-out; z-index: 10; position: relative; backface-visibility: hidden; will-change: transform; }
         @media (hover: hover) and (pointer: fine) { .tilt-card { transform-style: preserve-3d; } }
         
         .reveal-on-scroll { opacity: 0; transform: translateY(40px); will-change: opacity, transform; }
         .hero-bubble { opacity: 0; transform: translateY(20px) scale(0.8); filter: blur(10px); will-change: opacity, transform, filter; }
         
-        .apple-pop { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease; }
-        .apple-pop:hover { transform: scale(1.05); box-shadow: 0 30px 60px -12px rgba(232, 138, 159, 0.2); border-color: #F9BDC6; }
+        .apple-pop { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; }
+        .apple-pop:hover { transform: scale(1.05); box-shadow: 0 30px 60px -12px rgba(232, 138, 159, 0.2); }
         
         .treatment-overlay { background: linear-gradient(to top, rgba(75,83,67,0.95) 0%, rgba(92,77,68,0.5) 50%, rgba(0,0,0,0) 100%); }
         .treatment-icon-anim { opacity: 0; transform: translateY(20px); will-change: opacity, transform; }
@@ -185,14 +182,19 @@
         .geo-tab.active { color: #DBC9B1; text-shadow: 0 0 20px rgba(219, 201, 177, 0.4); }
         
         .content-visible { opacity: 1; transform: translateY(0); display: block; transition: all 0.4s ease; }
-        .map-layer { transition: opacity 0.5s ease-in-out; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .map-visible { opacity: 1; z-index: 10; }
+        
+        .visit-card-notch { 
+            -webkit-mask-image: radial-gradient(circle at 50% 0, transparent 40px, black 41px); 
+            mask-image: radial-gradient(circle at 50% 0, transparent 40px, black 41px); 
+        }
+
+        .map-layer { transition: opacity 0.5s ease-in-out; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .map-container-fix { transform: translateZ(0); -webkit-transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; -webkit-mask-image: -webkit-radial-gradient(white, black); }
 
         .faq-content { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .faq-open .faq-content { max-height: 300px; opacity: 1; margin-top: 0.5rem; }
         .faq-icon { transition: transform 0.3s ease; } .faq-open .faq-icon { transform: rotate(180deg); color: #E88A9F; }
 
-        /* === SEAMLESS MARQUEE OPTIMIZATION === */
         .marquee-container { 
             overflow: hidden; width: 100%; cursor: grab; position: relative; 
             touch-action: pan-y; user-select: none; -webkit-user-select: none;
@@ -205,8 +207,26 @@
             will-change: transform; transform: translate3d(0,0,0);
             backface-visibility: hidden;
         }
-        .marquee-track > div {
-            transform: translateZ(0); backface-visibility: hidden; -webkit-font-smoothing: subpixel-antialiased;
+        .marquee-track > div { transform: translateZ(0); backface-visibility: hidden; -webkit-font-smoothing: subpixel-antialiased; }
+
+        #menu-backdrop { transition: opacity 0.5s ease; }
+        #side-drawer { transform: translateX(100%); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .menu-open #menu-backdrop { opacity: 1; pointer-events: auto; }
+        .menu-open #side-drawer { transform: translateX(0); }
+        
+        .menu-link { transform: translateX(40px); opacity: 0; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); outline: none; -webkit-tap-highlight-color: transparent; }
+        .menu-open .menu-link { transform: translateX(0); opacity: 1; }
+        .menu-open .menu-link:nth-child(1) { transition-delay: 0.10s; }
+        .menu-open .menu-link:nth-child(2) { transition-delay: 0.15s; }
+        .menu-open .menu-link:nth-child(3) { transition-delay: 0.20s; }
+        .menu-open .menu-link:nth-child(4) { transition-delay: 0.25s; }
+
+        #mobile-fab {
+            transform: translateY(150%); opacity: 0; pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        #mobile-fab.fab-visible {
+            transform: translateY(0); opacity: 1; pointer-events: auto;
         }
     </style>
 </head>
@@ -217,22 +237,39 @@
         window.onbeforeunload = function () { window.scrollTo(0, 0); }
     </script>
 
+    <div id="menu-backdrop" class="fixed inset-0 z-[2147483648] bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none">
+        <div id="side-drawer" class="absolute top-0 right-0 w-[70vw] md:w-[320px] h-full bg-brandDark/95 backdrop-blur-2xl shadow-[-20px_0_50px_rgba(0,0,0,0.3)] border-l border-brandSand/20 flex flex-col justify-start pt-32 md:pt-40">
+            <nav class="flex flex-col items-start gap-8 px-10 md:px-14">
+                <a href="#" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-brandRose active:text-brandRose focus:text-brandRose transition-colors">Home</a>
+                <a href="#menu" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-brandRose active:text-brandRose focus:text-brandRose transition-colors">Services</a>
+                <a href="#experience" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-brandRose active:text-brandRose focus:text-brandRose transition-colors">Experience</a>
+                <a href="#location" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-brandRose active:text-brandRose focus:text-brandRose transition-colors">Location</a>
+                
+                <div class="menu-link h-px w-12 bg-brandSand/30 my-2"></div>
+                <div class="menu-link flex gap-6 mt-2">
+                    <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="text-brandSand hover:text-brandRose active:text-brandRose transition-colors outline-none"><i class="ph-fill ph-instagram-logo text-3xl"></i></a>
+                    <a href="https://wa.me/923058852525" target="_blank" class="text-brandSand hover:text-brandRose active:text-brandRose transition-colors outline-none"><i class="ph-fill ph-whatsapp-logo text-3xl"></i></a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
     <nav class="nav-fixed-layer nav-transparent flex items-center justify-between" id="navbar">
         <div class="w-full max-w-7xl mx-auto px-4 md:px-6 relative h-full flex items-center justify-between">
-            <div class="flex items-center justify-start w-[140px]">
+            
+            <div class="flex-1 flex items-center justify-start">
+                <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="md:hidden nav-text hover:opacity-80 transition-opacity p-2 -ml-2 outline-none" aria-label="Instagram">
+                    <i class="ph ph-instagram-logo text-2xl icon-gradient-brand"></i>
+                </a>
+                
                 <div id="shop-status" class="hidden md:flex flex-col items-start gap-0.5 opacity-0 transition-opacity duration-700">
                     <span id="status-label" class="text-[9px] uppercase tracking-[0.2em] nav-text opacity-70">Club Status</span>
                     <span id="status-val" class="text-[11px] uppercase tracking-[0.1em] font-serif font-bold nav-text">Checking</span>
                 </div>
-                <div class="md:hidden flex"> 
-                    <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="nav-text hover:opacity-80 transition-opacity duration-300 p-2 -ml-2" aria-label="Instagram">
-                        <i class="ph ph-instagram-logo text-2xl icon-gradient-brand"></i>
-                    </a>
-                </div>
             </div>
             
             <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-auto flex flex-col items-center justify-center">
-                <a href="#" class="group flex flex-col items-center text-center justify-center relative">
+                <a href="#" class="group flex flex-col items-center text-center justify-center relative outline-none">
                     <div class="logo-circle flex items-center justify-center relative">
                         <div class="brand-ring"></div>
                         <div class="w-full h-full rounded-full overflow-hidden flex items-center justify-center z-40 bg-base">
@@ -243,44 +280,40 @@
                 </a>
             </div>
             
-            <div class="flex items-center justify-end w-[140px]">
-                <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="hidden lg:block nav-text hover:opacity-80 transition-opacity duration-300 mr-6" aria-label="Instagram">
-                    <i class="ph ph-instagram-logo text-xl icon-gradient-brand"></i>
+            <div class="flex-1 flex items-center justify-end gap-4 md:gap-6">
+                <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="hidden md:block nav-text hover:opacity-80 transition-opacity outline-none" aria-label="Instagram">
+                    <i class="ph ph-instagram-logo text-xl md:text-2xl icon-gradient-brand"></i>
                 </a>
-                <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20book%20a%20wellness%20session." target="_blank" class="book-btn-perfect group">
-                    <span class="text-[10px] uppercase tracking-widest whitespace-nowrap">Book<span class="hidden md:inline"> Now</span></span>
+                
+                <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20book%20a%20wellness%20session." target="_blank" class="book-btn-perfect group hidden lg:flex">
+                    <span class="text-[10px] uppercase tracking-widest whitespace-nowrap">Book Now</span>
                 </a>
+
+                <button id="menu-btn" class="nav-text hover:opacity-80 transition-opacity flex items-center justify-center p-2 -mr-2 outline-none" aria-label="Menu">
+                    <i id="menu-icon" class="ph ph-list text-[28px] md:text-[32px] icon-gradient-brand transition-all duration-300"></i>
+                </button>
             </div>
         </div>
     </nav>
 
-    <div class="fixed bottom-6 left-6 right-6 z-[999999] sm:hidden">
-        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20book%20a%20wellness%20session." class="block w-full bg-gradient-to-r from-brandSand via-brandBlush to-brandSand bg-[length:200%_auto] animate-gradient-x text-brandDark py-4 rounded-xl text-center font-extrabold uppercase tracking-widest text-xs shadow-[0_10px_30px_rgba(232,138,159,0.5)] border border-white/50 backdrop-blur-sm transition-transform duration-300 active:scale-95">Book Appointment</a>
+    <div id="mobile-fab" class="fixed bottom-6 left-6 right-6 z-[999998] sm:hidden">
+        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20book%20a%20wellness%20session." class="block w-full bg-gradient-to-r from-brandSand via-brandBlush to-brandSand bg-[length:200%_auto] animate-gradient-x text-brandDark py-4 rounded-xl text-center font-extrabold uppercase tracking-widest text-xs shadow-[0_10px_30px_rgba(232,138,159,0.5)] border border-white/50 backdrop-blur-sm active:scale-95 transition-transform duration-200 outline-none">Book Appointment</a>
     </div>
 
-    <div class="fixed left-6 top-1/2 -translate-y-1/2 z-[99999] hidden xl:flex flex-col gap-4">
-        <a href="https://wa.me/923058852525?text=Hi,%20I%20have%20a%20query%20regarding%20Sen'i%20Wellness%20Club." target="_blank" class="w-12 h-12 rounded-full bg-base/90 backdrop-blur border border-brandDark/20 text-brandDark flex items-center justify-center hover:scale-110 hover:bg-brandDark hover:text-brandSand transition-all duration-300 shadow-lg group">
-            <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
-            <span class="absolute left-14 bg-brandDark text-brandSand text-[10px] px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-widest uppercase shadow-lg pointer-events-none">Chat</span>
-        </a>
-    </div>
-
-    <header class="relative w-full min-h-screen flex flex-col items-center justify-center md:justify-start overflow-hidden bg-brandDark">
-        
+    <div class="fixed top-0 left-0 w-full h-[100vh] z-0 bg-brandDark">
         <div class="absolute inset-0 z-0 overflow-hidden hidden md:block">
-            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1920" alt="Luxury Wellness Spa" class="w-full h-full object-cover object-[center_35%] opacity-60 animate-cinematic" fetchpriority="high" loading="eager" width="1920" height="1080">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1920" alt="Luxury Wellness Spa" class="w-full h-full object-cover object-[center_35%] opacity-85 animate-cinematic" fetchpriority="high" loading="eager" width="1920" height="1080">
         </div>
-
-        <div class="absolute inset-0 z-0 overflow-hidden md:hidden bg-brandBrown">
-            <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-60">
+        <div class="absolute inset-0 z-0 overflow-hidden md:hidden">
+            <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-85">
                 <source src="assets/mobile-hero.mp4" type="video/mp4">
             </video>
         </div>
-        
-        <div class="absolute inset-0 z-0 bg-gradient-to-b from-brandDark/70 via-brandDark/20 to-brandBrown/40"></div>
-        <div class="hero-bottom-blend"></div>
+        <div class="absolute inset-0 z-0 bg-black/40"></div>
+    </div>
 
-        <div class="relative z-20 text-center max-w-5xl px-6 pb-20 pt-32 md:pt-[30vh]">
+    <header class="relative w-full min-h-[100vh] flex flex-col items-center justify-center md:justify-start overflow-hidden z-10 pointer-events-none">
+        <div class="relative z-20 text-center max-w-5xl px-6 pb-20 pt-32 md:pt-[30vh] pointer-events-auto">
             <div class="hero-anim inline-flex items-center gap-2 bg-base/10 backdrop-blur-md border border-base/20 px-5 py-1.5 rounded-full shadow-2xl mb-8 mx-auto cursor-default">
                 <i class="ph-fill ph-leaf text-brandRose text-lg"></i>
                 <span class="text-[10px] md:text-[11px] font-bold text-white uppercase tracking-[0.15em] drop-shadow-md">Luxury Wellness & Spa</span>
@@ -293,7 +326,7 @@
                 Experience holistic healing, relaxation, and mindful <br class="hidden md:block">living at Sen’i Wellness Club.
             </p>
             <div class="hero-anim">
-                <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="group relative inline-flex items-center justify-center px-8 py-3 md:px-12 md:py-4 overflow-hidden rounded-full bg-brandSand text-brandDark shadow-[0_0_40px_rgba(219,201,177,0.3)] transition-all duration-300 hover:scale-105 hover:bg-base">
+                <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="group relative inline-flex items-center justify-center px-8 py-3 md:px-12 md:py-4 overflow-hidden rounded-full bg-brandSand text-brandDark shadow-[0_0_40px_rgba(219,201,177,0.3)] transition-all duration-300 hover:scale-105 hover:bg-base outline-none">
                     <span class="relative text-xs font-bold uppercase tracking-[0.2em] group-hover:pr-4 transition-all">Portfolio</span>
                     <i class="ph-bold ph-arrow-right absolute right-4 opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
                 </a>
@@ -301,7 +334,7 @@
         </div>
     </header>
 
-    <section class="pb-12 pt-12 md:pt-20 bg-base relative z-20">
+    <section class="pb-12 pt-12 md:pt-20 bg-base relative z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.15)]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-12">
                 <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
@@ -332,7 +365,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-base relative z-20 border-t border-brandSand/20">
+    <section class="py-24 bg-base relative z-20">
         <div class="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
             <h2 class="font-serif text-3xl md:text-5xl text-brandDark mb-8">Nurturing Body & Soul</h2>
             <p class="text-lg text-brandBrown leading-relaxed font-light">
@@ -341,7 +374,7 @@
         </div>
     </section>
 
-    <section id="menu" class="py-24 bg-base relative z-20 border-t border-brandSand/20">
+    <section id="menu" class="py-24 bg-base relative z-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 md:mb-24 reveal-on-scroll">
                 <h2 class="font-serif text-3xl md:text-5xl text-brandDark mb-4">Our Services</h2>
@@ -362,7 +395,7 @@
                             <p class="text-brandSand text-xs font-bold uppercase tracking-wider mb-3">Relieve Stress</p>
                             <p class="text-brandSand/80 text-[15px] font-medium leading-relaxed mb-6 drop-shadow-sm">Deep therapeutic massage designed to relieve stress, improve circulation, and promote deep relaxation.</p>
                         </div>
-                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Full%20Body%20Massage." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors">Book Now <i class="ph-bold ph-arrow-right"></i></a>
+                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Full%20Body%20Massage." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Now <i class="ph-bold ph-arrow-right"></i></a>
                     </div>
                 </article>
                 
@@ -378,7 +411,7 @@
                             <p class="text-brandSand text-xs font-bold uppercase tracking-wider mb-3">Restore Glow</p>
                             <p class="text-brandSand/80 text-[15px] font-medium leading-relaxed mb-6 drop-shadow-sm">Rejuvenating facials tailored to restore glow and nourish your skin naturally and safely.</p>
                         </div>
-                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Facial%20Treatments." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors">Book Now <i class="ph-bold ph-arrow-right"></i></a>
+                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Facial%20Treatments." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Now <i class="ph-bold ph-arrow-right"></i></a>
                     </div>
                 </article>
 
@@ -394,14 +427,14 @@
                             <p class="text-brandSand text-xs font-bold uppercase tracking-wider mb-3">Mindful Breathing</p>
                             <p class="text-brandSand/80 text-[15px] font-medium leading-relaxed mb-6 drop-shadow-sm">Mindful yoga classes focused on flexibility, breathing, and mental clarity for the soul.</p>
                         </div>
-                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Yoga%20Sessions." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors">Book Now <i class="ph-bold ph-arrow-right"></i></a>
+                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Yoga%20Sessions." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Now <i class="ph-bold ph-arrow-right"></i></a>
                     </div>
                 </article>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-base relative overflow-hidden border-t border-brandSand/20">
+    <section id="experience" class="py-24 bg-base relative overflow-hidden z-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-20 reveal-on-scroll">
                 <h3 class="font-serif text-3xl md:text-4xl text-brandDark mb-4">Your Experience</h3>
@@ -443,13 +476,13 @@
         </div>
     </section>
 
-    <section class="py-24 bg-base border-y border-brandSand/20">
+    <section class="py-24 bg-base z-20 relative">
         <div class="max-w-2xl mx-auto px-6">
             <div class="text-center mb-12 reveal-on-scroll">
                 <h3 class="font-serif text-3xl md:text-4xl text-brandDark">Expert Answers</h3>
             </div>
             <div class="space-y-3">
-                <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow" onclick="toggleFaq(this)">
+                <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
                     <div class="p-5 flex justify-between items-center">
                         <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">How do I book an appointment?</span>
                         <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
@@ -459,7 +492,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow" onclick="toggleFaq(this)">
+                <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
                     <div class="p-5 flex justify-between items-center">
                         <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">Do I need to bring anything with me?</span>
                         <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
@@ -469,7 +502,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow" onclick="toggleFaq(this)">
+                <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
                     <div class="p-5 flex justify-between items-center">
                         <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">Are your therapists certified?</span>
                         <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
@@ -482,7 +515,7 @@
         </div>
     </section>
 
-    <section class="py-20 bg-base border-b border-brandSand/20 overflow-hidden">
+    <section class="py-20 bg-base overflow-hidden z-20 relative">
         <div class="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end reveal-on-scroll">
             <div>
                 <h3 class="font-serif text-3xl text-brandDark">Happy Clients</h3>
@@ -520,7 +553,7 @@
         </div>
     </section>
 
-    <section class="py-32 bg-base">
+    <section id="location" class="pt-32 pb-32 bg-base z-20 relative">
         <div class="max-w-7xl mx-auto px-6 reveal-on-scroll">
             
             <div class="flex justify-center mb-8 relative z-30">
@@ -549,14 +582,14 @@
                                 <p class="flex items-center gap-4"><i class="ph-fill ph-phone text-brandRose text-xl"></i><a href="tel:+923058852525">+92 305 8852525</a></p>
                             </address>
                             <div class="mt-8">
-                                <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.724517662557!2d72.995577888855!3d33.68924140000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf0010d13591%3A0xa15838e52b4d2675!2sSen'i%20Wellness%20Club!5e1!3m2!1sen!2s!4v1771848366834!5m2!1sen!2s" target="_blank" class="inline-flex items-center gap-2 border border-brandSand/40 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brandSand hover:text-brandDark hover:border-brandSand transition-all duration-300">
+                                <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.724517662557!2d72.995577888855!3d33.68924140000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf0010d13591%3A0xa15838e52b4d2675!2sSen'i%20Wellness%20Club!5e1!3m2!1sen!2s!4v1771848366834!5m2!1sen!2s" target="_blank" class="inline-flex items-center gap-2 border border-brandSand/40 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brandSand hover:text-brandDark hover:border-brandSand transition-all duration-300 outline-none">
                                     Get Directions <i class="ph-bold ph-arrow-right"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="h-[350px] w-full rounded-2xl overflow-hidden border border-brandSand/20 shadow-lg relative bg-[#2a2a2a]">
+                    <div class="map-container-fix h-[350px] w-full rounded-2xl overflow-hidden border border-brandSand/20 shadow-lg relative bg-[#2a2a2a]">
                         <iframe title="Location Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.724517662557!2d72.995577888855!3d33.68924140000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf0010d13591%3A0xa15838e52b4d2675!2sSen'i%20Wellness%20Club!5e1!3m2!1sen!2s!4v1771848366834!5m2!1sen!2s" class="map-layer map-visible map-dark" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
@@ -564,19 +597,20 @@
         </div>
     </section>
 
-    <footer class="bg-brandDark pb-32 md:pb-12 pt-20 relative z-20 -mt-1 border-t border-brandSand/10">
+    <footer class="bg-brandDark pb-32 md:pb-12 pt-20 relative z-20 -mt-1">
         <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] -mt-[2px]">
             <svg class="relative block w-full h-12 md:h-16 transform translate-y-px" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#FDFDFD"></path></svg>
         </div>
+        
         <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
             <div>
-                <h4 class="font-serif text-xl text-brandSand">Sen’i Wellness Club</h4>
-                <p class="text-xs text-brandSand/60 mt-2">© 2026. All rights reserved.</p>
+                <h4 class="font-serif text-xl text-brandSand drop-shadow-md">Sen’i Wellness Club</h4>
+                <p class="text-xs text-brandSand/80 mt-2">© 2026. All rights reserved.</p>
             </div>
             <div class="flex gap-6 items-center">
-                <a href="https://www.linkedin.com/in/anum-shahzeb/" target="_blank" class="hover:opacity-80 transition-opacity duration-300"><i class="ph-fill ph-linkedin-logo text-2xl icon-gradient-brand"></i></a>
-                <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="hover:opacity-80 transition-opacity duration-300"><i class="ph-fill ph-instagram-logo text-2xl icon-gradient-brand"></i></a>
-                <a href="https://wa.me/923058852525" target="_blank" class="hover:opacity-80 transition-opacity duration-300"><i class="ph-fill ph-whatsapp-logo text-2xl icon-gradient-brand"></i></a>
+                <a href="https://www.linkedin.com/in/anum-shahzeb/" target="_blank" class="hover:opacity-80 transition-opacity duration-300 outline-none"><i class="ph-fill ph-linkedin-logo text-2xl icon-gradient-brand"></i></a>
+                <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="hover:opacity-80 transition-opacity duration-300 outline-none"><i class="ph-fill ph-instagram-logo text-2xl icon-gradient-brand"></i></a>
+                <a href="https://wa.me/923058852525" target="_blank" class="hover:opacity-80 transition-opacity duration-300 outline-none"><i class="ph-fill ph-whatsapp-logo text-2xl icon-gradient-brand"></i></a>
             </div>
         </div>
     </footer>
@@ -588,27 +622,50 @@
         window.addEventListener('load', () => { setTimeout(() => { document.body.classList.add('loaded'); }, 300); });
         
         document.addEventListener('DOMContentLoaded', () => {
+            
+            const menuBtn = document.getElementById('menu-btn');
+            const menuIcon = document.getElementById('menu-icon');
+            const menuBackdrop = document.getElementById('menu-backdrop');
+            const menuLinks = document.querySelectorAll('.menu-link');
+            const navbar = document.getElementById('navbar');
+            let isMenuOpen = false;
+
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                if(isMenuOpen) {
+                    document.body.classList.add('menu-open');
+                    menuIcon.classList.remove('ph-list');
+                    menuIcon.classList.add('ph-x');
+                    navbar.classList.add('nav-menu-open');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.classList.remove('menu-open');
+                    menuIcon.classList.remove('ph-x');
+                    menuIcon.classList.add('ph-list');
+                    navbar.classList.remove('nav-menu-open');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+            menuBackdrop.addEventListener('click', (e) => {
+                if (e.target === menuBackdrop) toggleMenu(); 
+            });
+            menuLinks.forEach(link => { link.addEventListener('click', toggleMenu); });
+
             const initGSAP = () => {
                 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                     gsap.registerPlugin(ScrollTrigger);
-                    ScrollTrigger.matchMedia({
-                        "(min-width: 1024px)": function() {
-                            gsap.to(".parallax-bg", {
-                                yPercent: 20, ease: "none",
-                                scrollTrigger: { trigger: "header", start: "top top", end: "bottom top", scrub: true }, 
-                            });
-                        }
-                    });
                     runAnimations();
                 } else { setTimeout(initGSAP, 100); }
             };
 
             function runAnimations() {
-                const navbar = document.getElementById('navbar');
                 let lastScrollY = window.scrollY;
                 let ticking = false;
+                const mobileFab = document.getElementById('mobile-fab');
 
-                function updateNavbar() {
+                function updateScrollState() {
                     if (lastScrollY > 20) {
                         navbar.classList.remove('nav-transparent');
                         navbar.classList.add('nav-scrolled');
@@ -616,9 +673,21 @@
                         navbar.classList.add('nav-transparent');
                         navbar.classList.remove('nav-scrolled');
                     }
+                    
+                    if (mobileFab) {
+                        if (lastScrollY > window.innerHeight * 0.5) {
+                            mobileFab.classList.add('fab-visible');
+                        } else {
+                            mobileFab.classList.remove('fab-visible');
+                        }
+                    }
                     ticking = false;
                 }
-                window.addEventListener('scroll', () => { lastScrollY = window.scrollY; if (!ticking) { window.requestAnimationFrame(updateNavbar); ticking = true; } }, { passive: true });
+                
+                window.addEventListener('scroll', () => { 
+                    lastScrollY = window.scrollY; 
+                    if (!ticking) { window.requestAnimationFrame(updateScrollState); ticking = true; } 
+                }, { passive: true });
 
                 ScrollTrigger.batch(".reveal-on-scroll", { start: "top 95%", onEnter: batch => gsap.to(batch, { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", stagger: 0.15 }) });
                 gsap.from(".hero-anim", { y: 30, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.5 });
@@ -634,21 +703,18 @@
 
             ScrollTrigger.config({ ignoreMobileResize: true });
 
-            // UPDATED JAVASCRIPT FOR BUSINESS HOURS: Mon-Fri (12:30 PM - 8:30 PM)
             const date = new Date(); const utc = date.getTime() + (date.getTimezoneOffset() * 60000); const pkTime = new Date(utc + (3600000 * 5));
             const hours = pkTime.getHours(); 
             const minutes = pkTime.getMinutes();
-            const day = pkTime.getDay(); // 0 is Sunday, 1 is Monday...
+            const day = pkTime.getDay(); 
             
-            // Calculate total minutes passed in the current day to handle precise 12:30 timings
             const totalMinutes = (hours * 60) + minutes;
-            const openMinute = (12 * 60) + 30; // 12:30 PM
-            const closeMinute = (20 * 60) + 30; // 8:30 PM
+            const openMinute = (12 * 60) + 30; 
+            const closeMinute = (20 * 60) + 30; 
 
             const statusContainer = document.getElementById('shop-status'); const statusVal = document.getElementById('status-val');
             if (statusContainer) { 
                 statusContainer.style.opacity = "1"; 
-                // Open only Mon (1) to Fri (5), and within the specific minute range
                 const isOpen = (day >= 1 && day <= 5) && (totalMinutes >= openMinute && totalMinutes < closeMinute); 
                 statusVal.innerText = isOpen ? "OPEN" : "CLOSED"; 
                 if (isOpen) { statusVal.classList.add("status-text-open"); statusVal.classList.remove("status-text-closed"); } else { statusVal.classList.add("status-text-closed"); statusVal.classList.remove("status-text-open"); }
@@ -687,23 +753,16 @@
                     function animateMarquee(currentTime) {
                         if (!isDragging) {
                             const deltaTime = currentTime - lastTime;
-                            lastTime = currentTime;
-                            const moveAmount = speed * (deltaTime / 16.6);
-                            
-                            scrollPos -= moveAmount; 
-                            
-                            if (scrollPos <= -singleSetWidth) { scrollPos += singleSetWidth; }
-                            currentTranslate = scrollPos;
-                            setSliderPosition();
-                            animationID = requestAnimationFrame(animateMarquee);
-                        } else {
-                            lastTime = currentTime;
-                            animationID = requestAnimationFrame(animateMarquee);
+                            if (deltaTime < 100) {
+                                const moveAmount = speed * (deltaTime / 16.6);
+                                scrollPos -= moveAmount; 
+                                if (scrollPos <= -singleSetWidth) { scrollPos += singleSetWidth; }
+                                currentTranslate = scrollPos;
+                                marqueeTrack.style.transform = `translate3d(${currentTranslate.toFixed(2)}px, 0, 0)`; 
+                            }
                         }
-                    }
-
-                    function setSliderPosition() {
-                        marqueeTrack.style.transform = `translate3d(${currentTranslate.toFixed(2)}px, 0, 0)`; 
+                        lastTime = currentTime;
+                        animationID = requestAnimationFrame(animateMarquee);
                     }
 
                     marqueeContainer.addEventListener('mousedown', touchStart);
@@ -715,20 +774,31 @@
                     marqueeContainer.addEventListener('touchmove', touchMove, {passive: false});
 
                     function touchStart(event) {
-                        isDragging = true; startX = getPositionX(event); prevTranslate = currentTranslate; marqueeContainer.style.cursor = 'grabbing';
+                        isDragging = true; 
+                        startX = getPositionX(event); 
+                        prevTranslate = currentTranslate; 
+                        marqueeContainer.style.cursor = 'grabbing';
                     }
 
                     function touchMove(event) {
                         if (isDragging) {
-                            const currentPosition = getPositionX(event); const currentDiff = currentPosition - startX; currentTranslate = prevTranslate + currentDiff;
-                            if(currentTranslate > 0) currentTranslate = -singleSetWidth; 
-                            if(currentTranslate < -singleSetWidth * 2) currentTranslate = -singleSetWidth;
-                            setSliderPosition();
+                            const currentPosition = getPositionX(event); 
+                            const currentDiff = currentPosition - startX; 
+                            currentTranslate = prevTranslate + currentDiff;
+                            
+                            if(currentTranslate > 0) currentTranslate -= singleSetWidth; 
+                            if(currentTranslate < -singleSetWidth * 2) currentTranslate += singleSetWidth;
+                            
+                            marqueeTrack.style.transform = `translate3d(${currentTranslate.toFixed(2)}px, 0, 0)`; 
                         }
                     }
 
                     function touchEnd() {
-                        if (!isDragging) return; isDragging = false; scrollPos = currentTranslate; marqueeContainer.style.cursor = 'grab'; 
+                        if (!isDragging) return; 
+                        isDragging = false; 
+                        scrollPos = currentTranslate;
+                        marqueeContainer.style.cursor = 'grab'; 
+                        lastTime = performance.now();
                     }
 
                     function getPositionX(event) { return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX; }
