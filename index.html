@@ -11,14 +11,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <link rel="preload" as="image" href="assets/logo.jpg">
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1920" media="(min-width: 768px)">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1920" media="(min-width: 768px)">
 
-    <title>Sen’i Wellness Club | Luxury Spa & Wellness Center in Islamabad</title>
-    <meta name="description" content="Experience holistic healing, yoga, massage therapy, and luxury spa services at Sen’i Wellness Club in F-10 Islamabad. Book your wellness escape today.">
+    <title>Sen’i Wellness Club | Luxury Spa & Women's Studio in Islamabad</title>
+    <meta name="description" content="A holistic safe haven by women, for women. Experience Sen'i Glow Studio and Sen'i Sync Studio in F-10 Islamabad.">
     
     <meta property="og:type" content="business.business">
-    <meta property="og:title" content="✨ Sen’i Wellness Club | Luxury Wellness & Spa">
-    <meta property="og:description" content="Experience holistic healing, relaxation, and mindful living. Visit us in F-10/2 Islamabad.">
+    <meta property="og:title" content="✨ Sen’i Wellness Club | By Women, For Women">
+    <meta property="og:description" content="Mindful Living, Spa & Holistic Wellness studio under one chic roof.">
     <meta property="og:image" content="https://seniwellness.vercel.app/assets/og-image.jpg"> 
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
@@ -47,12 +47,10 @@
                     animation: { 
                         'spin-slow': 'spin 12s linear infinite', 
                         'cinematic': 'cinematicMove 20s ease-in-out infinite alternate',
-                        'float-slow': 'float 4s ease-in-out infinite',
                         'gradient-x': 'gradientX 3s ease infinite',
                     },
                     keyframes: { 
                         cinematicMove: { '0%': { transform: 'scale(1.0) translate3d(0, 0, 0)' }, '100%': { transform: 'scale(1.15) translate3d(-2%, 0, 0)' } },
-                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-5px)' } },
                         gradientX: { '0%, 100%': { backgroundPosition: '0% 50%' }, '50%': { backgroundPosition: '100% 50%' } }
                     }
                 }
@@ -61,6 +59,7 @@
     </script>
 
     <style>
+        /* === CORE STABILITY === */
         html { scroll-behavior: smooth; }
         body { 
             background-color: #FDFDFD; color: #4B5343; 
@@ -83,6 +82,16 @@
         ::-webkit-scrollbar-track { background: #FDFDFD; }
         ::-webkit-scrollbar-thumb { background: #E88A9F; border-radius: 4px; }
 
+        /* GPU Layer isolated ONLY to the fixed video to prevent VRAM crashes/tearing on mobile */
+        .video-gpu-layer {
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            will-change: transform;
+        }
+
+        /* === NAVBAR ARCHITECTURE (EXACT AESTHETIC BAR SPECS) === */
         .nav-fixed-layer {
             position: fixed; top: -1px; left: 0; width: 100%; padding-top: 1px;
             z-index: 2147483649 !important;
@@ -113,16 +122,16 @@
         .nav-scrolled .nav-text { color: #4B5343 !important; text-shadow: none; }
         .nav-scrolled .status-text-open { color: #4B5343 !important; }
 
-        /* RESTORED EXACT AESTHETIC BAR LOGO PHYSICS */
+        /* EXACT AESTHETIC BAR LOGO PHYSICS RESTORED */
         .logo-circle { 
             width: 6rem; height: 6rem; padding: 0.5rem; background: #FDFDFD; border-radius: 9999px; 
-            box-shadow: 0 20px 40px -10px rgba(75, 83, 67, 0.2); 
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3); 
             transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
             position: relative; z-index: 60; 
         }
         .nav-scrolled .logo-circle { 
             width: 5rem; height: 5rem; padding: 0.35rem; 
-            box-shadow: 0 10px 20px -5px rgba(75, 83, 67, 0.1); 
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1); 
             transform: translateY(12px); 
         }
 
@@ -136,7 +145,7 @@
         }
         .nav-scrolled .brand-ring { transform: scale(0.6); opacity: 0; }
 
-        .dha-text { transition: all 0.5s ease; opacity: 1; transform: translateY(0); max-height: 20px; margin-top: 0.2rem; display: block; }
+        .dha-text { transition: all 0.5s ease; opacity: 1; transform: translateY(0); max-height: 20px; margin-top: 0.3rem; display: block; }
         .nav-scrolled .dha-text { opacity: 0; transform: translateY(-20px); max-height: 0; margin: 0; }
 
         .book-btn-perfect {
@@ -209,17 +218,45 @@
         }
         .marquee-track > div { transform: translateZ(0); backface-visibility: hidden; -webkit-font-smoothing: subpixel-antialiased; }
 
-        #menu-backdrop { transition: opacity 0.5s ease; }
-        #side-drawer { transform: translateX(100%); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .menu-open #menu-backdrop { opacity: 1; pointer-events: auto; }
-        .menu-open #side-drawer { transform: translateX(0); }
+        /* ===================================================================== */
+        /* PREMIUM SOLID LUXURY GRADIENT (CALM, MATTE, BRAND-FOCUSED)            */
+        /* ===================================================================== */
+        .premium-gradient-bg {
+            background: linear-gradient(135deg, #4B5343 0%, #3a4133 50%, #5C4D44 100%);
+            background-size: 200% 200%;
+            animation: smoothPan 15s ease infinite alternate;
+        }
+        @keyframes smoothPan {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* --- MENU SLIDE LOGIC (FIXED TO RIGHT SIDE) --- */
+        #menu-backdrop { 
+            opacity: 0; 
+            pointer-events: none; 
+            transition: opacity 0.5s ease; 
+        }
+        #side-drawer { 
+            right: 0;
+            transform: translateX(100%); 
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
+        }
+        body.menu-open #menu-backdrop { 
+            opacity: 1; 
+            pointer-events: auto; 
+        }
+        body.menu-open #side-drawer { 
+            transform: translateX(0); 
+        }
         
         .menu-link { transform: translateX(40px); opacity: 0; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); outline: none; -webkit-tap-highlight-color: transparent; }
-        .menu-open .menu-link { transform: translateX(0); opacity: 1; }
-        .menu-open .menu-link:nth-child(1) { transition-delay: 0.10s; }
-        .menu-open .menu-link:nth-child(2) { transition-delay: 0.15s; }
-        .menu-open .menu-link:nth-child(3) { transition-delay: 0.20s; }
-        .menu-open .menu-link:nth-child(4) { transition-delay: 0.25s; }
+        body.menu-open .menu-link { transform: translateX(0); opacity: 1; }
+        body.menu-open .menu-link:nth-child(1) { transition-delay: 0.10s; }
+        body.menu-open .menu-link:nth-child(2) { transition-delay: 0.15s; }
+        body.menu-open .menu-link:nth-child(3) { transition-delay: 0.20s; }
+        body.menu-open .menu-link:nth-child(4) { transition-delay: 0.25s; }
+        body.menu-open .menu-link:nth-child(5) { transition-delay: 0.30s; }
 
         #mobile-fab {
             transform: translateY(150%); opacity: 0; pointer-events: none;
@@ -230,25 +267,28 @@
         }
     </style>
 </head>
-<body class="antialiased font-sans relative selection:bg-brandBlush selection:text-brandDark bg-base">
+<body class="antialiased font-sans relative selection:bg-brandBlush selection:text-brandDark bg-brandDark overflow-x-hidden">
 
     <script>
         if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
         window.onbeforeunload = function () { window.scrollTo(0, 0); }
     </script>
 
-    <div id="menu-backdrop" class="fixed inset-0 z-[2147483648] bg-black/40 backdrop-blur-sm opacity-0 pointer-events-none">
-        <div id="side-drawer" class="absolute top-0 right-0 w-[70vw] md:w-[320px] h-full bg-brandDark/95 backdrop-blur-2xl shadow-[-20px_0_50px_rgba(0,0,0,0.3)] border-l border-brandSand/20 flex flex-col justify-start pt-32 md:pt-40">
-            <nav class="flex flex-col items-start gap-8 px-10 md:px-14">
-                <a href="#" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-brandRose active:text-brandRose focus:text-brandRose transition-colors">Home</a>
-                <a href="#menu" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-brandRose active:text-brandRose focus:text-brandRose transition-colors">Services</a>
-                <a href="#experience" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-brandRose active:text-brandRose focus:text-brandRose transition-colors">Experience</a>
-                <a href="#location" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-brandRose active:text-brandRose focus:text-brandRose transition-colors">Location</a>
+    <div id="menu-backdrop" class="fixed inset-0 z-[2147483648] bg-black/40 backdrop-blur-sm">
+        <div id="side-drawer" class="fixed top-0 right-0 w-[75vw] md:w-[350px] h-full shadow-[-20px_0_50px_rgba(0,0,0,0.3)] border-l border-brandSand/20 flex flex-col justify-start pt-32 md:pt-40 relative premium-gradient-bg overflow-hidden">
+            
+            <nav class="flex flex-col items-start gap-8 px-10 md:px-14 relative z-20">
+                <a href="#" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-white active:text-white focus:text-white transition-colors">Home</a>
+                <a href="#studios" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-white active:text-white focus:text-white transition-colors">Our Studios</a>
+                <a href="#experience" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-white active:text-white focus:text-white transition-colors">Experience</a>
+                <a href="#memberships" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-white active:text-white focus:text-white transition-colors">Memberships</a>
+                <a href="#location" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-white active:text-white focus:text-white transition-colors">Location</a>
                 
                 <div class="menu-link h-px w-12 bg-brandSand/30 my-2"></div>
+                
                 <div class="menu-link flex gap-6 mt-2">
-                    <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="text-brandSand hover:text-brandRose active:text-brandRose transition-colors outline-none"><i class="ph-fill ph-instagram-logo text-3xl"></i></a>
-                    <a href="https://wa.me/923058852525" target="_blank" class="text-brandSand hover:text-brandRose active:text-brandRose transition-colors outline-none"><i class="ph-fill ph-whatsapp-logo text-3xl"></i></a>
+                    <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="text-[#F9BDC6] hover:text-[#DBC9B1] active:text-[#DBC9B1] transition-colors outline-none"><i class="ph-fill ph-instagram-logo text-3xl drop-shadow-md"></i></a>
+                    <a href="https://wa.me/923058852525" target="_blank" class="text-[#F9BDC6] hover:text-[#DBC9B1] active:text-[#DBC9B1] transition-colors outline-none"><i class="ph-fill ph-whatsapp-logo text-3xl drop-shadow-md"></i></a>
                 </div>
             </nav>
         </div>
@@ -285,8 +325,8 @@
                     <i class="ph ph-instagram-logo text-xl md:text-2xl icon-gradient-brand"></i>
                 </a>
                 
-                <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20book%20a%20wellness%20session." target="_blank" class="book-btn-perfect group hidden lg:flex">
-                    <span class="text-[10px] uppercase tracking-widest whitespace-nowrap">Book Now</span>
+                <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20join%20the%20community." target="_blank" class="book-btn-perfect group hidden lg:flex">
+                    <span class="text-[10px] uppercase tracking-widest whitespace-nowrap">Join The Community</span>
                 </a>
 
                 <button id="menu-btn" class="nav-text hover:opacity-80 transition-opacity flex items-center justify-center p-2 -mr-2 outline-none" aria-label="Menu">
@@ -297,323 +337,352 @@
     </nav>
 
     <div id="mobile-fab" class="fixed bottom-6 left-6 right-6 z-[999998] sm:hidden">
-        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20book%20a%20wellness%20session." class="block w-full bg-gradient-to-r from-brandSand via-brandBlush to-brandSand bg-[length:200%_auto] animate-gradient-x text-brandDark py-4 rounded-xl text-center font-extrabold uppercase tracking-widest text-xs shadow-[0_10px_30px_rgba(232,138,159,0.5)] border border-white/50 backdrop-blur-sm active:scale-95 transition-transform duration-200 outline-none">Book Appointment</a>
+        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20join%20the%20community." class="block w-full bg-gradient-to-r from-brandSand via-brandBlush to-brandSand bg-[length:200%_auto] animate-gradient-x text-brandDark py-4 rounded-xl text-center font-extrabold uppercase tracking-widest text-xs shadow-[0_10px_30px_rgba(232,138,159,0.5)] border border-white/50 backdrop-blur-sm active:scale-95 transition-transform duration-200 outline-none">Join The Community</a>
     </div>
 
-    <div class="fixed top-0 left-0 w-full h-[100vh] z-0 bg-brandDark">
-        <div class="absolute inset-0 z-0 overflow-hidden hidden md:block">
-            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1920" alt="Luxury Wellness Spa" class="w-full h-full object-cover object-[center_35%] opacity-85 animate-cinematic" fetchpriority="high" loading="eager" width="1920" height="1080">
-        </div>
-        <div class="absolute inset-0 z-0 overflow-hidden md:hidden">
-            <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-85">
-                <source src="assets/mobile-hero.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="absolute inset-0 z-0 bg-black/40"></div>
+    <div class="fixed left-6 top-1/2 -translate-y-1/2 z-[99999] hidden xl:flex flex-col gap-4">
+        <a href="https://wa.me/923058852525?text=Hi,%20I%20have%20a%20query%20regarding%20Sen'i%20Wellness%20Club." target="_blank" class="w-12 h-12 rounded-full bg-base/90 backdrop-blur border border-brandDark/20 text-brandDark flex items-center justify-center hover:scale-110 hover:bg-brandDark hover:text-brandSand transition-all duration-300 shadow-lg group outline-none">
+            <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
+            <span class="absolute left-14 bg-brandDark text-brandSand text-[10px] px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-widest uppercase shadow-lg pointer-events-none">Chat</span>
+        </a>
     </div>
 
-    <header class="relative w-full min-h-[100vh] flex flex-col items-center justify-center md:justify-start overflow-hidden z-10 pointer-events-none">
-        <div class="relative z-20 text-center max-w-5xl px-6 pb-20 pt-32 md:pt-[30vh] pointer-events-auto">
-            <div class="hero-anim inline-flex items-center gap-2 bg-base/10 backdrop-blur-md border border-base/20 px-5 py-1.5 rounded-full shadow-2xl mb-8 mx-auto cursor-default">
-                <i class="ph-fill ph-leaf text-brandRose text-lg"></i>
-                <span class="text-[10px] md:text-[11px] font-bold text-white uppercase tracking-[0.15em] drop-shadow-md">Luxury Wellness & Spa</span>
+    <div class="relative w-full">
+        
+        <div class="sticky top-0 left-0 w-full h-[100vh] z-0 overflow-hidden bg-brandDark video-gpu-layer">
+            <div class="absolute inset-0 z-0 overflow-hidden hidden md:block">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1920" alt="Luxury Wellness Spa" class="w-full h-full object-cover object-[center_35%] opacity-85 animate-cinematic" fetchpriority="high" loading="eager" width="1920" height="1080">
             </div>
-            <h1 class="hero-anim font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[9rem] leading-[1.1] md:leading-[0.9] text-white mb-8 tracking-tight text-center hero-text-shadow">
-                Where Wellness<br>
-                <span class="italic font-light text-liquid-gold">Meets Serenity.</span>
-            </h1>
-            <p class="hero-anim text-gray-100 text-lg md:text-2xl font-light max-w-2xl mx-auto mb-12 leading-relaxed px-4 text-center hero-text-shadow">
-                Experience holistic healing, relaxation, and mindful <br class="hidden md:block">living at Sen’i Wellness Club.
-            </p>
-            <div class="hero-anim">
-                <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="group relative inline-flex items-center justify-center px-8 py-3 md:px-12 md:py-4 overflow-hidden rounded-full bg-brandSand text-brandDark shadow-[0_0_40px_rgba(219,201,177,0.3)] transition-all duration-300 hover:scale-105 hover:bg-base outline-none">
-                    <span class="relative text-xs font-bold uppercase tracking-[0.2em] group-hover:pr-4 transition-all">Portfolio</span>
-                    <i class="ph-bold ph-arrow-right absolute right-4 opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
-                </a>
+            <div class="absolute inset-0 z-0 overflow-hidden md:hidden">
+                <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-85">
+                    <source src="assets/mobile-hero.mp4" type="video/mp4">
+                </video>
             </div>
+            <div class="absolute inset-0 z-0 bg-black/40"></div>
         </div>
-    </header>
 
-    <section class="pb-12 pt-12 md:pt-20 bg-base relative z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.15)]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-12">
-                <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800" alt="Massage" class="w-full h-full object-cover" loading="eager">
-                    </div>
-                    <span class="font-serif text-lg text-brandDark tracking-wide">Massage</span>
+        <header class="absolute top-0 left-0 w-full min-h-[100vh] z-10 flex flex-col items-center justify-center md:justify-start pointer-events-none">
+            <div class="relative z-20 text-center max-w-5xl px-6 pb-20 pt-32 md:pt-[30vh] pointer-events-auto">
+                <div class="hero-anim inline-flex items-center gap-2 bg-base/10 backdrop-blur-md border border-base/20 px-5 py-1.5 rounded-full shadow-2xl mb-8 mx-auto cursor-default">
+                    <i class="ph-fill ph-leaf text-brandRose text-lg"></i>
+                    <span class="text-[10px] md:text-[11px] font-bold text-white uppercase tracking-[0.15em] drop-shadow-md">By Women, For Women</span>
                 </div>
-                <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800" alt="Facial" class="w-full h-full object-cover" loading="eager">
-                    </div>
-                    <span class="font-serif text-lg text-brandDark tracking-wide">Facials</span>
-                </div>
-                <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="Yoga" class="w-full h-full object-cover" loading="eager">
-                    </div>
-                    <span class="font-serif text-lg text-brandDark tracking-wide text-center leading-tight">Yoga</span>
-                </div>
-                <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
-                    <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&q=80&w=800" alt="Studio" class="w-full h-full object-cover" loading="eager">
-                    </div>
-                    <span class="font-serif text-lg text-brandDark tracking-wide">Studio</span>
+                <h1 class="hero-anim font-serif text-5xl sm:text-7xl md:text-8xl lg:text-[9rem] leading-[1.1] md:leading-[0.9] text-white mb-8 tracking-tight text-center hero-text-shadow">
+                    Where Wellness<br>
+                    <span class="italic font-light text-liquid-gold">Meets Serenity.</span>
+                </h1>
+                <p class="hero-anim text-gray-100 text-lg md:text-2xl font-light max-w-2xl mx-auto mb-12 leading-relaxed px-4 text-center hero-text-shadow">
+                    Experience holistic healing, physical sync, and mindful <br class="hidden md:block">living at Islamabad's premier safe haven.
+                </p>
+                <div class="hero-anim">
+                    <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="group relative inline-flex items-center justify-center px-8 py-3 md:px-12 md:py-4 overflow-hidden rounded-full bg-brandSand text-brandDark shadow-[0_0_40px_rgba(219,201,177,0.3)] transition-all duration-300 hover:scale-105 hover:bg-base outline-none">
+                        <span class="relative text-xs font-bold uppercase tracking-[0.2em] group-hover:pr-4 transition-all">Portfolio</span>
+                        <i class="ph-bold ph-arrow-right absolute right-4 opacity-0 group-hover:opacity-100 transition-all duration-300"></i>
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <section class="py-24 bg-base relative z-20">
-        <div class="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
-            <h2 class="font-serif text-3xl md:text-5xl text-brandDark mb-8">Nurturing Body & Soul</h2>
-            <p class="text-lg text-brandBrown leading-relaxed font-light">
-                Sen’i Wellness Club is a luxury wellness and holistic healing space in Islamabad designed to promote relaxation, balance, and inner peace. Our serene environment, nature-inspired aesthetics, and carefully curated treatments provide a sanctuary from daily stress.
-            </p>
-        </div>
-    </section>
-
-    <section id="menu" class="py-24 bg-base relative z-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 md:mb-24 reveal-on-scroll">
-                <h2 class="font-serif text-3xl md:text-5xl text-brandDark mb-4">Our Services</h2>
-                <div class="h-0.5 w-16 bg-brandSand mx-auto opacity-70"></div>
-                <p class="mt-4 text-brandBrown text-xs uppercase tracking-widest">Mindful • Relaxing • Therapeutic</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                <article class="tilt-card service-card group relative bg-brandDark h-[450px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer reveal-on-scroll apple-pop border border-brandSand/20">
-                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200" alt="Full Body Massage" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="eager">
-                    <div class="absolute inset-0 treatment-overlay z-10"></div>
-                    <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-20">
-                        <div class="treatment-icon-anim w-12 h-12 bg-base rounded-full flex items-center justify-center mb-4 group-hover:bg-brandSand transition-colors duration-500 shadow-lg">
-                            <i class="ph-fill ph-hands-clapping text-2xl text-brandDark transition-colors"></i>
+        <main class="relative z-20 bg-base w-full flex flex-col shadow-[0_-20px_40px_rgba(0,0,0,0.15)]">
+            
+            <section class="pb-12 pt-12 md:pt-20 bg-base relative z-20">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-12">
+                        <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
+                                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" alt="Glow Spa" class="w-full h-full object-cover" loading="eager">
+                            </div>
+                            <span class="font-serif text-lg text-brandDark tracking-wide text-center">Glow Studio<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Spa <span class="font-sans font-light opacity-70">&</span> Facials</span></span>
                         </div>
-                        <div>
-                            <h3 class="font-serif text-2xl md:text-3xl text-base mb-2 drop-shadow-md">Full Body Massage</h3>
-                            <p class="text-brandSand text-xs font-bold uppercase tracking-wider mb-3">Relieve Stress</p>
-                            <p class="text-brandSand/80 text-[15px] font-medium leading-relaxed mb-6 drop-shadow-sm">Deep therapeutic massage designed to relieve stress, improve circulation, and promote deep relaxation.</p>
+                        <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
+                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="Sync Yoga" class="w-full h-full object-cover" loading="eager">
+                            </div>
+                            <span class="font-serif text-lg text-brandDark tracking-wide text-center leading-tight">Sync Studio<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Yoga <span class="font-sans font-light opacity-70">&</span> Pilates</span></span>
                         </div>
-                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Full%20Body%20Massage." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Now <i class="ph-bold ph-arrow-right"></i></a>
-                    </div>
-                </article>
-                
-                <article class="tilt-card service-card group relative bg-brandDark h-[450px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer reveal-on-scroll apple-pop border border-brandSand/20">
-                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=1200" alt="Facial Treatments" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="eager">
-                    <div class="absolute inset-0 treatment-overlay z-10"></div>
-                    <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-20">
-                        <div class="treatment-icon-anim w-12 h-12 bg-base rounded-full flex items-center justify-center mb-4 group-hover:bg-brandSand transition-colors duration-500 shadow-lg">
-                            <i class="ph-fill ph-sparkle text-2xl text-brandDark transition-colors"></i>
+                        <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
+                                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800" alt="Desi Maalish" class="w-full h-full object-cover" loading="eager">
+                            </div>
+                            <span class="font-serif text-lg text-brandDark tracking-wide text-center">Desi Maalish<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Tradition</span></span>
                         </div>
-                        <div>
-                            <h3 class="font-serif text-2xl md:text-3xl text-base mb-2 drop-shadow-md">Facial Treatments</h3>
-                            <p class="text-brandSand text-xs font-bold uppercase tracking-wider mb-3">Restore Glow</p>
-                            <p class="text-brandSand/80 text-[15px] font-medium leading-relaxed mb-6 drop-shadow-sm">Rejuvenating facials tailored to restore glow and nourish your skin naturally and safely.</p>
+                        <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
+                            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
+                                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=800" alt="Community" class="w-full h-full object-cover" loading="eager">
+                            </div>
+                            <span class="font-serif text-lg text-brandDark tracking-wide text-center">Community<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Safe Haven</span></span>
                         </div>
-                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Facial%20Treatments." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Now <i class="ph-bold ph-arrow-right"></i></a>
-                    </div>
-                </article>
-
-                <article class="tilt-card service-card group relative bg-brandDark h-[450px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer reveal-on-scroll apple-pop border border-brandSand/20">
-                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1200" alt="Yoga Sessions" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="eager">
-                    <div class="absolute inset-0 treatment-overlay z-10"></div>
-                    <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-20">
-                        <div class="treatment-icon-anim w-12 h-12 bg-base rounded-full flex items-center justify-center mb-4 group-hover:bg-brandSand transition-colors duration-500 shadow-lg">
-                            <i class="ph-fill ph-sun text-2xl text-brandDark transition-colors"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-serif text-2xl md:text-3xl text-base mb-2 drop-shadow-md">Yoga Sessions</h3>
-                            <p class="text-brandSand text-xs font-bold uppercase tracking-wider mb-3">Mindful Breathing</p>
-                            <p class="text-brandSand/80 text-[15px] font-medium leading-relaxed mb-6 drop-shadow-sm">Mindful yoga classes focused on flexibility, breathing, and mental clarity for the soul.</p>
-                        </div>
-                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Yoga%20Sessions." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Now <i class="ph-bold ph-arrow-right"></i></a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="py-24 bg-base relative overflow-hidden z-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-20 reveal-on-scroll">
-                <h3 class="font-serif text-3xl md:text-4xl text-brandDark mb-4">Your Experience</h3>
-                <p class="text-brandBrown font-light max-w-2xl mx-auto">Simple, respectful, and deeply rejuvenating.</p>
-            </div>
-            <div class="relative">
-                <div class="absolute left-8 md:left-[50%] top-0 bottom-0 w-0.5 bg-brandSand/30 md:-translate-x-1/2"></div>
-                <div id="journey-line" class="absolute left-8 md:left-[50%] top-0 w-0.5 bg-gradient-to-b from-brandBlush via-brandDark to-brandSand md:-translate-x-1/2 h-0 transition-all duration-100"></div>
-                
-                <div class="space-y-16 md:space-y-24 relative z-10">
-                    <div class="journey-step flex flex-row md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
-                        <div class="w-full md:w-5/12 text-left md:text-right order-2 md:order-1 pl-4 md:pl-0 pt-2 md:pt-0">
-                            <h4 class="font-serif text-xl md:text-2xl text-brandDark mb-2">01. Arrival & Consult</h4>
-                            <p class="text-base text-brandBrown leading-relaxed font-medium">Step into our sanctuary for a personalized consultation to understand your unique wellness needs.</p>
-                        </div>
-                        <div class="w-16 h-16 bg-base border-2 border-brandSand rounded-full flex-shrink-0 flex items-center justify-center shadow-lg relative order-1 md:order-2 z-20"><i class="ph-fill ph-leaf text-2xl text-brandRose"></i></div>
-                        <div class="hidden md:block w-5/12 order-3"></div>
-                    </div>
-                    
-                    <div class="journey-step flex flex-row md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
-                        <div class="hidden md:block w-5/12 order-1"></div>
-                        <div class="w-16 h-16 bg-base border-2 border-brandSand rounded-full flex-shrink-0 flex items-center justify-center shadow-lg relative order-1 md:order-2 z-20"><i class="ph-fill ph-sparkle text-2xl text-brandRose"></i></div>
-                        <div class="w-full md:w-5/12 text-left md:text-left order-2 md:order-3 pl-4 md:pl-0 pt-2 md:pt-0">
-                            <h4 class="font-serif text-xl md:text-2xl text-brandDark mb-2">02. Holistic Healing</h4>
-                            <p class="text-base text-brandBrown leading-relaxed font-medium">Experience your curated treatment in a private, nature-inspired environment completely focused on peace.</p>
-                        </div>
-                    </div>
-
-                    <div class="journey-step flex flex-row md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
-                        <div class="w-full md:w-5/12 text-left md:text-right order-2 md:order-1 pl-4 md:pl-0 pt-2 md:pt-0">
-                            <h4 class="font-serif text-xl md:text-2xl text-brandDark mb-2">03. Renewal & Aftercare</h4>
-                            <p class="text-base text-brandBrown leading-relaxed font-medium">Emerge refreshed. We provide gentle herbal tea and expert guidance to maintain your inner balance and radiant glow at home.</p>
-                        </div>
-                        <div class="w-16 h-16 bg-base border-2 border-brandSand rounded-full flex-shrink-0 flex items-center justify-center shadow-lg relative order-1 md:order-2 z-20"><i class="ph-fill ph-flower-lotus text-2xl text-brandRose"></i></div>
-                        <div class="hidden md:block w-5/12 order-3"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section class="py-24 bg-base z-20 relative">
-        <div class="max-w-2xl mx-auto px-6">
-            <div class="text-center mb-12 reveal-on-scroll">
-                <h3 class="font-serif text-3xl md:text-4xl text-brandDark">Expert Answers</h3>
-            </div>
-            <div class="space-y-3">
-                <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
-                    <div class="p-5 flex justify-between items-center">
-                        <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">How do I book an appointment?</span>
-                        <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
-                    </div>
-                    <div class="faq-content px-5">
-                        <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Simply click the "Book Now" button to chat with our front desk on WhatsApp. We recommend booking at least 24 hours in advance to secure your preferred slot.</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
-                    <div class="p-5 flex justify-between items-center">
-                        <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">Do I need to bring anything with me?</span>
-                        <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
-                    </div>
-                    <div class="faq-content px-5">
-                        <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Not at all. We provide everything you need for your session, including plush robes, comfortable slippers, and premium luxury toiletries. Just bring yourself and a desire to relax.</p>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
-                    <div class="p-5 flex justify-between items-center">
-                        <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">Are your therapists certified?</span>
-                        <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
-                    </div>
-                    <div class="faq-content px-5">
-                        <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Absolutely. All of our spa therapists and yoga instructors are highly trained, certified professionals with extensive experience in holistic healing and premium wellness therapies.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 bg-base overflow-hidden z-20 relative">
-        <div class="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end reveal-on-scroll">
-            <div>
-                <h3 class="font-serif text-3xl text-brandDark">Happy Clients</h3>
-                <div class="flex items-center gap-2 mt-2">
-                    <p class="text-xs font-bold text-brandBrown uppercase tracking-widest flex items-center gap-1">
-                        <i class="ph-fill ph-heart text-brandRose"></i> Real Experiences from Our Sanctuary
+            <section class="py-24 bg-base relative z-20 -mt-px">
+                <div class="max-w-4xl mx-auto px-6 text-center reveal-on-scroll">
+                    <h2 class="font-serif text-3xl md:text-5xl text-brandDark mb-8">Nurturing Imperfection</h2>
+                    <p class="text-lg text-brandBrown leading-relaxed font-light">
+                        Inspired by Wabi-Sabi, Sen’i Wellness Club is an exclusive women-only haven in Islamabad designed to promote relaxation, balance, and inner peace. Our serene environment, two distinct studios, and carefully curated treatments provide a sanctuary from daily stress.
                     </p>
                 </div>
-            </div>
-        </div>
-        
-        <div class="marquee-container" id="marqueeContainer">
-            <div class="marquee-track" id="marqueeTrack">
-                <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
-                    <div class="flex text-brandSand mb-4 text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-                    <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"A truly luxurious escape in F-10. The ambiance is incredibly peaceful, and the full body massage released all my work stress. Highly recommended!"</p>
-                    <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brandDark text-brandSand flex items-center justify-center font-serif text-xs">Z</div><div><p class="text-sm font-bold text-brandDark">Zainab Tariq</p><p class="text-[10px] text-brandBlush uppercase tracking-wider flex items-center gap-1">Islamabad</p></div></div>
-                </div>
-                <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
-                    <div class="flex text-brandSand mb-4 text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-                    <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"I booked a facial treatment for my sister before her wedding, and the results were stunning. The staff is highly professional and welcoming."</p>
-                    <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brandDark text-brandSand flex items-center justify-center font-serif text-xs">A</div><div><p class="text-sm font-bold text-brandDark">Ayesha K.</p><p class="text-[10px] text-brandBlush uppercase tracking-wider flex items-center gap-1">Rawalpindi</p></div></div>
-                </div>
-                <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
-                    <div class="flex text-brandSand mb-4 text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-                    <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"Attended their weekend yoga session. The instructors are brilliant and the studio environment instantly calms your mind. A hidden gem in the city."</p>
-                    <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brandDark text-brandSand flex items-center justify-center font-serif text-xs">O</div><div><p class="text-sm font-bold text-brandDark">Omar Farooq</p><p class="text-[10px] text-brandBlush uppercase tracking-wider flex items-center gap-1">Islamabad</p></div></div>
-                </div>
-                <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
-                    <div class="flex text-brandSand mb-4 text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-                    <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"Best spa experience I've had in Pakistan. The cleanliness, the soft music, and the herbal tea at the end made it a perfect 10/10."</p>
-                    <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brandDark text-brandSand flex items-center justify-center font-serif text-xs">S</div><div><p class="text-sm font-bold text-brandDark">Sadia Rehman</p><p class="text-[10px] text-brandBlush uppercase tracking-wider flex items-center gap-1">Islamabad</p></div></div>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <section id="location" class="pt-32 pb-32 bg-base z-20 relative">
-        <div class="max-w-7xl mx-auto px-6 reveal-on-scroll">
-            
-            <div class="flex justify-center mb-8 relative z-30">
-                <div class="bg-base/80 backdrop-blur-xl border border-brandSand/60 rounded-full px-8 py-2.5 shadow-[0_10px_40px_-10px_rgba(219,201,177,0.5)] animate-float-slow ring-1 ring-brandSand/30">
-                    <span class="text-brandDark text-[10px] font-bold uppercase tracking-[0.25em] whitespace-nowrap drop-shadow-sm flex items-center gap-2">
-                        <i class="ph-fill ph-map-pin text-brandRose text-sm"></i> Location
-                    </span>
-                </div>
-            </div>
+            <section id="studios" class="py-24 bg-base relative z-20 -mt-px">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-16 md:mb-24 reveal-on-scroll">
+                        <h2 class="font-serif text-3xl md:text-5xl text-brandDark mb-4">Our Studios</h2>
+                        <div class="h-0.5 w-16 bg-brandSand mx-auto opacity-70"></div>
+                        <p class="mt-4 text-brandBrown text-xs uppercase tracking-widest">Mindful <span class="font-sans font-light opacity-70">&</span> Relaxing <span class="font-sans font-light opacity-70">&</span> Therapeutic</p>
+                    </div>
 
-            <div class="bg-brandDark rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden visit-card-notch mt-4 border border-brandSand/10">
-                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brandBrown/40 rounded-full blur-[100px] pointer-events-none"></div>
-                
-                <div class="geo-tab-container">
-                    <div class="geo-tab active font-serif text-lg md:text-xl text-brandSand">Islamabad Club</div>
-                </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        
+                        <article class="tilt-card service-card group relative bg-brandDark h-[450px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer reveal-on-scroll apple-pop border border-brandSand/20">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=1200" alt="Sync Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="eager">
+                            <div class="absolute inset-0 treatment-overlay z-10"></div>
+                            <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-20">
+                                <div class="treatment-icon-anim w-12 h-12 bg-base rounded-full flex items-center justify-center mb-4 group-hover:bg-brandSand transition-colors duration-500 shadow-lg">
+                                    <i class="ph-fill ph-sun text-2xl text-brandDark transition-colors"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-serif text-3xl md:text-4xl text-base mb-2 drop-shadow-md">Sen'i Sync Studio</h3>
+                                    <p class="text-brandSand text-xs font-bold uppercase tracking-wider mb-4">Movement <span class="font-sans font-light opacity-70">&</span> Strength</p>
+                                    <p class="text-brandSand/80 text-[15px] font-medium leading-relaxed mb-6 drop-shadow-sm">Dynamic group classes featuring Yoga, Mat Pilates, Breathwork, and targeted Strength <span class="font-sans font-light opacity-70">&</span> Conditioning.</p>
+                                </div>
+                                <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Sync%20Studio." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Class <i class="ph-bold ph-arrow-right"></i></a>
+                            </div>
+                        </article>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 mt-12">
-                    <div class="text-base space-y-8 h-[320px] relative">
-                        <div class="content-visible absolute inset-0 flex flex-col justify-center">
-                            <h2 class="font-serif text-3xl md:text-4xl mb-4 text-base">Visit Our Sanctuary</h2>
-                            <div class="h-0.5 w-12 bg-brandSand opacity-50 mb-8"></div>
-                            <address class="space-y-4 font-light text-brandSand/90 not-italic">
-                                <p class="flex items-start gap-4"><i class="ph-fill ph-map-pin text-brandRose text-xl mt-1"></i><span class="leading-relaxed">103 Street 22, F-10/2,<br>Islamabad, Pakistan.</span></p>
-                                <p class="flex items-start gap-4"><i class="ph-fill ph-clock text-brandRose text-xl mt-1"></i><span class="leading-relaxed">Mon - Fri: 12:30 PM - 8:30 PM<br>Sat - Sun: Closed</span></p>
-                                <p class="flex items-center gap-4"><i class="ph-fill ph-phone text-brandRose text-xl"></i><a href="tel:+923058852525">+92 305 8852525</a></p>
-                            </address>
-                            <div class="mt-8">
-                                <a href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.724517662557!2d72.995577888855!3d33.68924140000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf0010d13591%3A0xa15838e52b4d2675!2sSen'i%20Wellness%20Club!5e1!3m2!1sen!2s!4v1771848366834!5m2!1sen!2s" target="_blank" class="inline-flex items-center gap-2 border border-brandSand/40 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brandSand hover:text-brandDark hover:border-brandSand transition-all duration-300 outline-none">
-                                    Get Directions <i class="ph-bold ph-arrow-right"></i>
-                                </a>
+                        <article class="tilt-card service-card group relative bg-brandDark h-[450px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer reveal-on-scroll apple-pop border border-brandSand/20">
+                            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200" alt="Glow Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="eager">
+                            <div class="absolute inset-0 treatment-overlay z-10"></div>
+                            <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-20">
+                                <div class="treatment-icon-anim w-12 h-12 bg-base rounded-full flex items-center justify-center mb-4 group-hover:bg-brandSand transition-colors duration-500 shadow-lg">
+                                    <i class="ph-fill ph-sparkle text-2xl text-brandDark transition-colors"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-serif text-3xl md:text-4xl text-base mb-2 drop-shadow-md">Sen'i Glow Studio</h3>
+                                    <p class="text-brandSand text-xs font-bold uppercase tracking-wider mb-4">Spa <span class="font-sans font-light opacity-70">&</span> Aesthetics</p>
+                                    <p class="text-brandSand/80 text-[15px] font-medium leading-relaxed mb-6 drop-shadow-sm">Premium facial treatments, full-body exfoliation, prenatal massage, and authentic Desi Maalish.</p>
+                                </div>
+                                <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Glow%20Studio." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Treatment <i class="ph-bold ph-arrow-right"></i></a>
+                            </div>
+                        </article>
+                        
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience" class="py-24 bg-base relative overflow-hidden z-20 -mt-px">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center mb-20 reveal-on-scroll">
+                        <h3 class="font-serif text-3xl md:text-4xl text-brandDark mb-4">Your Experience</h3>
+                        <p class="text-brandBrown font-light max-w-2xl mx-auto">Simple, respectful, and deeply rejuvenating.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute left-8 md:left-[50%] top-0 bottom-0 w-0.5 bg-brandSand/30 md:-translate-x-1/2"></div>
+                        <div id="journey-line" class="absolute left-8 md:left-[50%] top-0 w-0.5 bg-gradient-to-b from-brandBlush via-brandDark to-brandSand md:-translate-x-1/2 h-0 transition-all duration-100"></div>
+                        
+                        <div class="space-y-16 md:space-y-24 relative z-10">
+                            <div class="journey-step flex flex-row md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
+                                <div class="w-full md:w-5/12 text-left md:text-right order-2 md:order-1 pl-4 md:pl-0 pt-2 md:pt-0">
+                                    <h4 class="font-serif text-xl md:text-2xl text-brandDark mb-2">01. Arrival <span class="font-sans font-light opacity-70">&</span> Consult</h4>
+                                    <p class="text-base text-brandBrown leading-relaxed font-medium">Step into our sanctuary for a personalized consultation to understand your unique wellness needs.</p>
+                                </div>
+                                <div class="w-16 h-16 bg-base border-2 border-brandSand rounded-full flex-shrink-0 flex items-center justify-center shadow-lg relative order-1 md:order-2 z-20"><i class="ph-fill ph-leaf text-2xl text-brandRose"></i></div>
+                                <div class="hidden md:block w-5/12 order-3"></div>
+                            </div>
+                            
+                            <div class="journey-step flex flex-row md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
+                                <div class="hidden md:block w-5/12 order-1"></div>
+                                <div class="w-16 h-16 bg-base border-2 border-brandSand rounded-full flex-shrink-0 flex items-center justify-center shadow-lg relative order-1 md:order-2 z-20"><i class="ph-fill ph-sparkle text-2xl text-brandRose"></i></div>
+                                <div class="w-full md:w-5/12 text-left md:text-left order-2 md:order-3 pl-4 md:pl-0 pt-2 md:pt-0">
+                                    <h4 class="font-serif text-xl md:text-2xl text-brandDark mb-2">02. Holistic Healing</h4>
+                                    <p class="text-base text-brandBrown leading-relaxed font-medium">Experience your curated treatment in a private, nature-inspired environment completely focused on peace.</p>
+                                </div>
+                            </div>
+
+                            <div class="journey-step flex flex-row md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
+                                <div class="w-full md:w-5/12 text-left md:text-right order-2 md:order-1 pl-4 md:pl-0 pt-2 md:pt-0">
+                                    <h4 class="font-serif text-xl md:text-2xl text-brandDark mb-2">03. Renewal <span class="font-sans font-light opacity-70">&</span> Aftercare</h4>
+                                    <p class="text-base text-brandBrown leading-relaxed font-medium">Emerge refreshed. We provide gentle herbal tea and expert guidance to maintain your inner balance and radiant glow at home.</p>
+                                </div>
+                                <div class="w-16 h-16 bg-base border-2 border-brandSand rounded-full flex-shrink-0 flex items-center justify-center shadow-lg relative order-1 md:order-2 z-20"><i class="ph-fill ph-flower-lotus text-2xl text-brandRose"></i></div>
+                                <div class="hidden md:block w-5/12 order-3"></div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section id="memberships" class="py-24 bg-base relative z-20 -mt-px px-4 md:px-6">
+                <div class="max-w-5xl mx-auto premium-gradient-bg rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden border border-brandSand/20 reveal-on-scroll">
+                    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-brandBrown/30 rounded-full blur-[80px] pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <h3 class="text-brandSand text-xs font-bold uppercase tracking-[0.3em] mb-4">The Sen'i Woman</h3>
+                        <h2 class="font-serif text-3xl md:text-5xl text-base mb-6 drop-shadow-md">Exclusive Memberships</h2>
+                        <p class="text-base text-brandSand/90 leading-relaxed font-light mb-10 max-w-2xl mx-auto">
+                            Join an elite community of like-minded women in Islamabad. Enjoy unlimited access to curated wellness programs, monthly community events, and preferential member-only rates across all sanctuary services.
+                        </p>
+                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20The%20Sen'i%20Woman%20Membership." target="_blank" class="inline-flex items-center gap-2 border border-brandSand/40 px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brandSand hover:text-brandDark transition-all duration-300 outline-none text-brandSand">
+                            Inquire About Membership <i class="ph-bold ph-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-24 bg-base z-20 relative -mt-px">
+                <div class="max-w-2xl mx-auto px-6">
+                    <div class="text-center mb-12 reveal-on-scroll">
+                        <h3 class="font-serif text-3xl md:text-4xl text-brandDark">Expert Answers</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
+                            <div class="p-5 flex justify-between items-center">
+                                <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">How do I join the community or book a session?</span>
+                                <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
+                            </div>
+                            <div class="faq-content px-5">
+                                <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Simply click the "Join The Community" button to connect with our front desk concierge via WhatsApp. We highly recommend booking at least 24 hours in advance to secure your preferred sanctuary slot.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
+                            <div class="p-5 flex justify-between items-center">
+                                <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">Do I need to bring anything with me?</span>
+                                <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
+                            </div>
+                            <div class="faq-content px-5">
+                                <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Not at all. Our F-10 sanctuary provides everything required for your curated experience, including plush robes, comfortable slippers, and premium luxury toiletries. Just bring a desire to disconnect.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
+                            <div class="p-5 flex justify-between items-center">
+                                <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">Are your therapists certified?</span>
+                                <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
+                            </div>
+                            <div class="faq-content px-5">
+                                <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Absolutely. All of our holistic healers, spa therapists, and yoga instructors are highly certified professionals with extensive experience in premium wellness therapies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-20 bg-base overflow-hidden z-20 relative -mt-px">
+                <div class="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end reveal-on-scroll">
+                    <div>
+                        <h3 class="font-serif text-3xl text-brandDark">Happy Clients</h3>
+                        <div class="flex items-center gap-2 mt-2">
+                            <p class="text-xs font-bold text-brandBrown uppercase tracking-widest flex items-center gap-1">
+                                <i class="ph-fill ph-heart text-brandRose"></i> Real Experiences from Our Sanctuary
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="marquee-container" id="marqueeContainer">
+                    <div class="marquee-track" id="marqueeTrack">
+                        <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
+                            <div class="flex text-brandSand mb-4 text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                            <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"A truly luxurious escape in F-10. The ambiance is incredibly peaceful, and the full body massage released all my work stress. Highly recommended!"</p>
+                            <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brandDark text-brandSand flex items-center justify-center font-serif text-xs">Z</div><div><p class="text-sm font-bold text-brandDark">Zainab Tariq</p><p class="text-[10px] text-brandBlush uppercase tracking-wider flex items-center gap-1">Islamabad</p></div></div>
+                        </div>
+                        <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
+                            <div class="flex text-brandSand mb-4 text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                            <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"I booked a facial treatment for my sister before her wedding, and the results were stunning. The staff is highly professional and welcoming."</p>
+                            <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brandDark text-brandSand flex items-center justify-center font-serif text-xs">A</div><div><p class="text-sm font-bold text-brandDark">Ayesha K.</p><p class="text-[10px] text-brandBlush uppercase tracking-wider flex items-center gap-1">Rawalpindi</p></div></div>
+                        </div>
+                        <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
+                            <div class="flex text-brandSand mb-4 text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                            <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"Attended their weekend yoga session. The instructors are brilliant and the studio environment instantly calms your mind. A hidden gem in the city."</p>
+                            <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brandDark text-brandSand flex items-center justify-center font-serif text-xs">O</div><div><p class="text-sm font-bold text-brandDark">Omar Farooq</p><p class="text-[10px] text-brandBlush uppercase tracking-wider flex items-center gap-1">Islamabad</p></div></div>
+                        </div>
+                        <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
+                            <div class="flex text-brandSand mb-4 text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
+                            <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"Best spa experience I've had in Pakistan. The cleanliness, the soft music, and the herbal tea at the end made it a perfect 10/10."</p>
+                            <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brandDark text-brandSand flex items-center justify-center font-serif text-xs">S</div><div><p class="text-sm font-bold text-brandDark">Sadia Rehman</p><p class="text-[10px] text-brandBlush uppercase tracking-wider flex items-center gap-1">Islamabad</p></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="location" class="pt-32 pb-32 bg-base z-20 relative -mt-px">
+                <div class="max-w-7xl mx-auto px-6 reveal-on-scroll">
                     
-                    <div class="map-container-fix h-[350px] w-full rounded-2xl overflow-hidden border border-brandSand/20 shadow-lg relative bg-[#2a2a2a]">
-                        <iframe title="Location Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.724517662557!2d72.995577888855!3d33.68924140000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf0010d13591%3A0xa15838e52b4d2675!2sSen'i%20Wellness%20Club!5e1!3m2!1sen!2s!4v1771848366834!5m2!1sen!2s" class="map-layer map-visible map-dark" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="flex justify-center mb-8 relative z-30">
+                        <div class="bg-base/80 backdrop-blur-xl border border-brandSand/60 rounded-full px-8 py-2.5 shadow-[0_10px_40px_-10px_rgba(219,201,177,0.5)] animate-float-slow ring-1 ring-brandSand/30">
+                            <span class="text-brandDark text-[10px] font-bold uppercase tracking-[0.25em] whitespace-nowrap drop-shadow-sm flex items-center gap-2">
+                                <i class="ph-fill ph-map-pin text-brandRose text-sm"></i> Location
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="bg-brandDark rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden visit-card-notch mt-4 border border-brandSand/10">
+                        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brandBrown/40 rounded-full blur-[100px] pointer-events-none"></div>
+                        
+                        <div class="geo-tab-container">
+                            <div class="geo-tab active font-serif text-lg md:text-xl text-brandSand">Islamabad Club</div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 mt-12">
+                            <div class="text-base space-y-8 h-[320px] relative">
+                                <div class="content-visible absolute inset-0 flex flex-col justify-center">
+                                    <h2 class="font-serif text-3xl md:text-4xl mb-4 text-base">Visit Our Sanctuary</h2>
+                                    <div class="h-0.5 w-12 bg-brandSand opacity-50 mb-8"></div>
+                                    <address class="space-y-4 font-light text-brandSand/90 not-italic">
+                                        <p class="flex items-start gap-4"><i class="ph-fill ph-map-pin text-brandRose text-xl mt-1"></i><span class="leading-relaxed">103 Street 22, F-10/2,<br>Islamabad, Pakistan.</span></p>
+                                        <p class="flex items-start gap-4"><i class="ph-fill ph-clock text-brandRose text-xl mt-1"></i><span class="leading-relaxed">Mon - Fri: 12:30 PM - 8:30 PM<br>Sat - Sun: Closed</span></p>
+                                        <p class="flex items-center gap-4"><i class="ph-fill ph-phone text-brandRose text-xl"></i><a href="tel:+923058852525">+92 305 8852525</a></p>
+                                    </address>
+                                    <div class="mt-8">
+                                        <a href="https://maps.app.goo.gl/iQCJh14aPW7eGXeU7" target="_blank" class="inline-flex items-center gap-2 border border-brandSand/40 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brandSand hover:text-brandDark hover:border-brandSand transition-all duration-300 outline-none">
+                                            Get Directions <i class="ph-bold ph-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="map-container-fix h-[350px] w-full rounded-2xl overflow-hidden border border-brandSand/20 shadow-lg relative bg-[#2a2a2a]">
+                                <iframe title="Location Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.7612466833475!2d72.99750907434341!3d33.68924583681284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf0010d13591%3A0xa15838e52b4d2675!2sSen'i%20Wellness%20Club!5e0!3m2!1sen!2s!4v1772078264549!5m2!1sen!2s" width="100%" height="100%" class="map-layer map-visible map-dark" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="relative w-full premium-gradient-bg pb-32 md:pb-12 pt-8 md:pt-12 z-20 overflow-hidden -mt-[1px]">
+            
+            <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none">
+                <svg class="relative block w-full h-10 md:h-14 transform -translate-y-px" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#FDFDFD"></path>
+                </svg>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-6 relative z-20 flex flex-col items-center pt-8">
+                <div class="text-center flex flex-col justify-center items-center w-full mb-8 relative z-20">
+                    <h2 class="font-serif text-5xl sm:text-7xl md:text-[7rem] lg:text-[9rem] tracking-tighter font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#ffffff] via-[#DBC9B1] to-[#E88A9F] pb-2 leading-[0.8] text-center w-full drop-shadow-2xl">
+                        Sen’i Wellness
+                    </h2>
+                    <div class="w-full flex justify-center mt-6 md:mt-8">
+                        <span class="text-brandSand/80 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-center border border-brandSand/30 px-6 py-2.5 rounded-full backdrop-blur-sm bg-brandDark/50">The Ultimate Sanctuary</span>
+                    </div>
+                </div>
+
+                <div class="w-full flex flex-col md:flex-row justify-between items-center gap-6 relative z-20 pt-4 mt-2">
+                    <div>
+                        <p class="text-xs text-brandSand/80 font-medium">© 2026 Sen'i Wellness Club. All rights reserved.</p>
+                    </div>
+                    <div class="flex gap-6 items-center">
+                        <a href="https://www.linkedin.com/in/anum-shahzeb/" target="_blank" class="text-[#F9BDC6] hover:text-[#DBC9B1] transition-colors duration-300 outline-none"><i class="ph-fill ph-linkedin-logo text-2xl drop-shadow-md"></i></a>
+                        <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="text-[#F9BDC6] hover:text-[#DBC9B1] transition-colors duration-300 outline-none"><i class="ph-fill ph-instagram-logo text-2xl drop-shadow-md"></i></a>
+                        <a href="https://wa.me/923058852525" target="_blank" class="text-[#F9BDC6] hover:text-[#DBC9B1] transition-colors duration-300 outline-none"><i class="ph-fill ph-whatsapp-logo text-2xl drop-shadow-md"></i></a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </footer>
 
-    <footer class="bg-brandDark pb-32 md:pb-12 pt-20 relative z-20 -mt-1">
-        <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] -mt-[2px]">
-            <svg class="relative block w-full h-12 md:h-16 transform translate-y-px" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#FDFDFD"></path></svg>
-        </div>
-        
-        <div class="max-w-7xl mx-auto px-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
-            <div>
-                <h4 class="font-serif text-xl text-brandSand drop-shadow-md">Sen’i Wellness Club</h4>
-                <p class="text-xs text-brandSand/80 mt-2">© 2026. All rights reserved.</p>
-            </div>
-            <div class="flex gap-6 items-center">
-                <a href="https://www.linkedin.com/in/anum-shahzeb/" target="_blank" class="hover:opacity-80 transition-opacity duration-300 outline-none"><i class="ph-fill ph-linkedin-logo text-2xl icon-gradient-brand"></i></a>
-                <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="hover:opacity-80 transition-opacity duration-300 outline-none"><i class="ph-fill ph-instagram-logo text-2xl icon-gradient-brand"></i></a>
-                <a href="https://wa.me/923058852525" target="_blank" class="hover:opacity-80 transition-opacity duration-300 outline-none"><i class="ph-fill ph-whatsapp-logo text-2xl icon-gradient-brand"></i></a>
-            </div>
-        </div>
-    </footer>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
@@ -626,6 +695,7 @@
             const menuBtn = document.getElementById('menu-btn');
             const menuIcon = document.getElementById('menu-icon');
             const menuBackdrop = document.getElementById('menu-backdrop');
+            const sideDrawer = document.getElementById('side-drawer');
             const menuLinks = document.querySelectorAll('.menu-link');
             const navbar = document.getElementById('navbar');
             let isMenuOpen = false;
@@ -695,7 +765,7 @@
                     scrollTrigger: { trigger: ".pb-12", start: "top 85%" }, 
                     scale: 1, opacity: 1, filter: "blur(0px)", y: 0, duration: 1.2, stagger: 0.15, ease: "power2.out" 
                 });
-                gsap.to(".treatment-icon-anim", { scrollTrigger: { trigger: "#menu", start: "top 70%" }, y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out" });
+                gsap.to(".treatment-icon-anim", { scrollTrigger: { trigger: "#studios", start: "top 70%" }, y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out" });
                 gsap.to("#journey-line", { height: "100%", ease: "none", scrollTrigger: { trigger: ".space-y-16", start: "top 70%", end: "bottom center", scrub: 1 } });
                 gsap.utils.toArray(".journey-step").forEach(step => { gsap.fromTo(step, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", scrollTrigger: { trigger: step, start: "top 90%" } }); });
             }
