@@ -13,26 +13,17 @@
     <link rel="preload" as="image" href="assets/logo.jpg">
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1920" media="(min-width: 768px)">
 
-<title>Sen’i Wellness Club | Luxury Spa & Women's Studio in Islamabad</title>
+    <title>Sen’i Wellness Club | Luxury Spa & Women's Studio in Islamabad</title>
     <meta name="description" content="A holistic safe haven by women, for women. Experience Sen'i Glow Studio and Sen'i Sync Studio in F-10 Islamabad.">
     
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seniwellness.vercel.app/">
+    <meta property="og:type" content="business.business">
     <meta property="og:title" content="✨ Sen’i Wellness Club | By Women, For Women">
     <meta property="og:description" content="Mindful Living, Spa & Holistic Wellness studio under one chic roof.">
-    <meta property="og:image" content="https://seniwellness.vercel.app/assets/og-image.jpg?v=2">
-    <meta property="og:image:secure_url" content="https://seniwellness.vercel.app/assets/og-image.jpg?v=2">
+    <meta property="og:image" content="https://seniwellness.vercel.app/assets/og-image.jpg"> 
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="seniwellness.vercel.app">
-    <meta property="twitter:url" content="https://seniwellness.vercel.app/">
-    <meta name="twitter:title" content="✨ Sen’i Wellness Club | By Women, For Women">
-    <meta name="twitter:description" content="Mindful Living, Spa & Holistic Wellness studio under one chic roof.">
-    <meta name="twitter:image" content="https://seniwellness.vercel.app/assets/og-image.jpg?v=2">
 
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
@@ -75,7 +66,7 @@
             overflow-x: hidden; width: 100%; min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            opacity: 0; transition: opacity 0.6s ease-out; 
+            opacity: 0; transition: opacity 0.4s ease-out; 
             -webkit-tap-highlight-color: transparent;
         }
         body.loaded { opacity: 1; }
@@ -91,19 +82,17 @@
         ::-webkit-scrollbar-track { background: #FDFDFD; }
         ::-webkit-scrollbar-thumb { background: #E88A9F; border-radius: 4px; }
 
-        /* GPU Layer isolated ONLY to the fixed video to prevent VRAM crashes/tearing on mobile */
         .video-gpu-layer {
             transform: translateZ(0);
             -webkit-transform: translateZ(0);
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
-            will-change: transform;
         }
 
-        /* === NAVBAR ARCHITECTURE (EXACT AESTHETIC BAR SPECS) === */
+        /* === NAVBAR ARCHITECTURE === */
         .nav-fixed-layer {
             position: fixed; top: -1px; left: 0; width: 100%; padding-top: 1px;
-            z-index: 2147483649 !important;
+            z-index: 100 !important;
             transform: translate3d(0,0,0);
             backface-visibility: hidden;
             transition: background-color 0.4s ease, height 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
@@ -131,7 +120,6 @@
         .nav-scrolled .nav-text { color: #4B5343 !important; text-shadow: none; }
         .nav-scrolled .status-text-open { color: #4B5343 !important; }
 
-        /* EXACT AESTHETIC BAR LOGO PHYSICS RESTORED */
         .logo-circle { 
             width: 6rem; height: 6rem; padding: 0.5rem; background: #FDFDFD; border-radius: 9999px; 
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3); 
@@ -227,37 +215,17 @@
         }
         .marquee-track > div { transform: translateZ(0); backface-visibility: hidden; -webkit-font-smoothing: subpixel-antialiased; }
 
-        /* ===================================================================== */
-        /* PREMIUM SOLID LUXURY GRADIENT (CALM, MATTE, BRAND-FOCUSED)            */
-        /* ===================================================================== */
         .premium-gradient-bg {
             background: linear-gradient(135deg, #4B5343 0%, #3a4133 50%, #5C4D44 100%);
             background-size: 200% 200%;
             animation: smoothPan 15s ease infinite alternate;
         }
-        @keyframes smoothPan {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
+        @keyframes smoothPan { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
 
-        /* --- MENU SLIDE LOGIC (FIXED TO RIGHT SIDE) --- */
-        #menu-backdrop { 
-            opacity: 0; 
-            pointer-events: none; 
-            transition: opacity 0.5s ease; 
-        }
-        #side-drawer { 
-            right: 0;
-            transform: translateX(100%); 
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
-        }
-        body.menu-open #menu-backdrop { 
-            opacity: 1; 
-            pointer-events: auto; 
-        }
-        body.menu-open #side-drawer { 
-            transform: translateX(0); 
-        }
+        #menu-backdrop { opacity: 0; pointer-events: none; transition: opacity 0.5s ease; }
+        #side-drawer { right: 0; transform: translateX(100%); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        body.menu-open #menu-backdrop { opacity: 1; pointer-events: auto; }
+        body.menu-open #side-drawer { transform: translateX(0); }
         
         .menu-link { transform: translateX(40px); opacity: 0; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); outline: none; -webkit-tap-highlight-color: transparent; }
         body.menu-open .menu-link { transform: translateX(0); opacity: 1; }
@@ -283,9 +251,8 @@
         window.onbeforeunload = function () { window.scrollTo(0, 0); }
     </script>
 
-    <div id="menu-backdrop" class="fixed inset-0 z-[2147483648] bg-black/40 backdrop-blur-sm">
+    <div id="menu-backdrop" class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm">
         <div id="side-drawer" class="fixed top-0 right-0 w-[75vw] md:w-[350px] h-full shadow-[-20px_0_50px_rgba(0,0,0,0.3)] border-l border-brandSand/20 flex flex-col justify-start pt-32 md:pt-40 relative premium-gradient-bg overflow-hidden">
-            
             <nav class="flex flex-col items-start gap-8 px-10 md:px-14 relative z-20">
                 <a href="#" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-white active:text-white focus:text-white transition-colors">Home</a>
                 <a href="#studios" class="menu-link font-serif text-3xl md:text-4xl text-brandSand hover:text-white active:text-white focus:text-white transition-colors">Our Studios</a>
@@ -305,12 +272,10 @@
 
     <nav class="nav-fixed-layer nav-transparent flex items-center justify-between" id="navbar">
         <div class="w-full max-w-7xl mx-auto px-4 md:px-6 relative h-full flex items-center justify-between">
-            
             <div class="flex-1 flex items-center justify-start">
                 <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="md:hidden nav-text hover:opacity-80 transition-opacity p-2 -ml-2 outline-none" aria-label="Instagram">
                     <i class="ph ph-instagram-logo text-2xl icon-gradient-brand"></i>
                 </a>
-                
                 <div id="shop-status" class="hidden md:flex flex-col items-start gap-0.5 opacity-0 transition-opacity duration-700">
                     <span id="status-label" class="text-[9px] uppercase tracking-[0.2em] nav-text opacity-70">Club Status</span>
                     <span id="status-val" class="text-[11px] uppercase tracking-[0.1em] font-serif font-bold nav-text">Checking</span>
@@ -333,11 +298,9 @@
                 <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="hidden md:block nav-text hover:opacity-80 transition-opacity outline-none" aria-label="Instagram">
                     <i class="ph ph-instagram-logo text-xl md:text-2xl icon-gradient-brand"></i>
                 </a>
-                
                 <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20join%20the%20community." target="_blank" class="book-btn-perfect group hidden lg:flex">
                     <span class="text-[10px] uppercase tracking-widest whitespace-nowrap">Join The Community</span>
                 </a>
-
                 <button id="menu-btn" class="nav-text hover:opacity-80 transition-opacity flex items-center justify-center p-2 -mr-2 outline-none" aria-label="Menu">
                     <i id="menu-icon" class="ph ph-list text-[28px] md:text-[32px] icon-gradient-brand transition-all duration-300"></i>
                 </button>
@@ -345,33 +308,33 @@
         </div>
     </nav>
 
-    <div id="mobile-fab" class="fixed bottom-6 left-6 right-6 z-[999998] sm:hidden">
+    <div id="mobile-fab" class="fixed bottom-6 left-6 right-6 z-[90] sm:hidden">
         <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20join%20the%20community." class="block w-full bg-gradient-to-r from-brandSand via-brandBlush to-brandSand bg-[length:200%_auto] animate-gradient-x text-brandDark py-4 rounded-xl text-center font-extrabold uppercase tracking-widest text-xs shadow-[0_10px_30px_rgba(232,138,159,0.5)] border border-white/50 backdrop-blur-sm active:scale-95 transition-transform duration-200 outline-none">Join The Community</a>
     </div>
 
-    <div class="fixed left-6 top-1/2 -translate-y-1/2 z-[99999] hidden xl:flex flex-col gap-4">
+    <div class="fixed left-6 top-1/2 -translate-y-1/2 z-[90] hidden xl:flex flex-col gap-4">
         <a href="https://wa.me/923058852525?text=Hi,%20I%20have%20a%20query%20regarding%20Sen'i%20Wellness%20Club." target="_blank" class="w-12 h-12 rounded-full bg-base/90 backdrop-blur border border-brandDark/20 text-brandDark flex items-center justify-center hover:scale-110 hover:bg-brandDark hover:text-brandSand transition-all duration-300 shadow-lg group outline-none">
             <i class="ph-fill ph-whatsapp-logo text-2xl"></i>
             <span class="absolute left-14 bg-brandDark text-brandSand text-[10px] px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap tracking-widest uppercase shadow-lg pointer-events-none">Chat</span>
         </a>
     </div>
 
-    <div class="relative w-full">
-        
-        <div class="sticky top-0 left-0 w-full h-[100vh] z-0 overflow-hidden bg-brandDark video-gpu-layer">
-            <div class="absolute inset-0 z-0 overflow-hidden hidden md:block">
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1920" alt="Luxury Wellness Spa" class="w-full h-full object-cover object-[center_35%] opacity-85 animate-cinematic" fetchpriority="high" loading="eager" width="1920" height="1080">
-            </div>
-            <div class="absolute inset-0 z-0 overflow-hidden md:hidden">
-                <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-85">
-                    <source src="assets/mobile-hero.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="absolute inset-0 z-0 bg-black/40"></div>
+    <div class="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden bg-brandDark video-gpu-layer">
+        <div class="absolute inset-0 z-0 overflow-hidden hidden md:block">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1920" alt="Luxury Wellness Spa" class="w-full h-full object-cover object-[center_35%] opacity-85 animate-cinematic" fetchpriority="high" loading="eager" width="1920" height="1080">
         </div>
+        <div class="absolute inset-0 z-0 overflow-hidden md:hidden">
+            <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-85">
+                <source src="assets/mobile-hero.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="absolute inset-0 z-0 bg-black/40"></div>
+    </div>
 
-        <header class="absolute top-0 left-0 w-full min-h-[100vh] z-10 flex flex-col items-center justify-center md:justify-start pointer-events-none">
-            <div class="relative z-20 text-center max-w-5xl px-6 pb-20 pt-32 md:pt-[30vh] pointer-events-auto">
+    <div class="relative w-full z-10 flex flex-col">
+        
+        <header class="relative w-full min-h-screen flex flex-col items-center justify-center px-6 py-32 pointer-events-none text-center">
+            <div class="relative z-20 pointer-events-auto w-full max-w-5xl">
                 <div class="hero-anim inline-flex items-center gap-2 bg-base/10 backdrop-blur-md border border-base/20 px-5 py-1.5 rounded-full shadow-2xl mb-8 mx-auto cursor-default">
                     <i class="ph-fill ph-leaf text-brandRose text-lg"></i>
                     <span class="text-[10px] md:text-[11px] font-bold text-white uppercase tracking-[0.15em] drop-shadow-md">By Women, For Women</span>
@@ -393,31 +356,30 @@
         </header>
 
         <main class="relative z-20 bg-base w-full flex flex-col shadow-[0_-20px_40px_rgba(0,0,0,0.15)]">
-            
             <section class="pb-12 pt-12 md:pt-20 bg-base relative z-20">
                 <div class="max-w-7xl mx-auto px-6">
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-12">
                         <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
                             <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" alt="Glow Spa" class="w-full h-full object-cover" loading="eager">
+                                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" alt="Glow Spa" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <span class="font-serif text-lg text-brandDark tracking-wide text-center">Glow Studio<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Spa <span class="font-sans font-light opacity-70">&</span> Facials</span></span>
                         </div>
                         <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
                             <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="Sync Yoga" class="w-full h-full object-cover" loading="eager">
+                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="Sync Yoga" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <span class="font-serif text-lg text-brandDark tracking-wide text-center leading-tight">Sync Studio<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Yoga <span class="font-sans font-light opacity-70">&</span> Pilates</span></span>
                         </div>
                         <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
                             <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800" alt="Desi Maalish" class="w-full h-full object-cover" loading="eager">
+                                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800" alt="Desi Maalish" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <span class="font-serif text-lg text-brandDark tracking-wide text-center">Desi Maalish<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Tradition</span></span>
                         </div>
                         <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
                             <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=800" alt="Community" class="w-full h-full object-cover" loading="eager">
+                                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=800" alt="Community" class="w-full h-full object-cover" loading="lazy">
                             </div>
                             <span class="font-serif text-lg text-brandDark tracking-wide text-center">Community<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Safe Haven</span></span>
                         </div>
@@ -443,9 +405,8 @@
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                        
                         <article class="tilt-card service-card group relative bg-brandDark h-[450px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer reveal-on-scroll apple-pop border border-brandSand/20">
-                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=1200" alt="Sync Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="eager">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=1200" alt="Sync Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="lazy">
                             <div class="absolute inset-0 treatment-overlay z-10"></div>
                             <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-20">
                                 <div class="treatment-icon-anim w-12 h-12 bg-base rounded-full flex items-center justify-center mb-4 group-hover:bg-brandSand transition-colors duration-500 shadow-lg">
@@ -461,7 +422,7 @@
                         </article>
 
                         <article class="tilt-card service-card group relative bg-brandDark h-[450px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer reveal-on-scroll apple-pop border border-brandSand/20">
-                            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200" alt="Glow Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="eager">
+                            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200" alt="Glow Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="lazy">
                             <div class="absolute inset-0 treatment-overlay z-10"></div>
                             <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-20">
                                 <div class="treatment-icon-anim w-12 h-12 bg-base rounded-full flex items-center justify-center mb-4 group-hover:bg-brandSand transition-colors duration-500 shadow-lg">
@@ -475,7 +436,6 @@
                                 <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Glow%20Studio." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Treatment <i class="ph-bold ph-arrow-right"></i></a>
                             </div>
                         </article>
-                        
                     </div>
                 </div>
             </section>
@@ -661,7 +621,6 @@
         </main>
 
         <footer class="relative w-full premium-gradient-bg pb-32 md:pb-12 pt-8 md:pt-12 z-20 overflow-hidden -mt-[1px]">
-            
             <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] z-20 pointer-events-none">
                 <svg class="relative block w-full h-10 md:h-14 transform -translate-y-px" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                     <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#FDFDFD"></path>
@@ -690,7 +649,6 @@
                 </div>
             </div>
         </footer>
-
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
@@ -769,7 +727,10 @@
                 }, { passive: true });
 
                 ScrollTrigger.batch(".reveal-on-scroll", { start: "top 95%", onEnter: batch => gsap.to(batch, { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", stagger: 0.15 }) });
-                gsap.from(".hero-anim", { y: 30, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.5 });
+                
+                // Removed the rigid delay so the text paints instantly alongside the background
+                gsap.from(".hero-anim", { y: 30, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" });
+                
                 gsap.to(".hero-bubble", { 
                     scrollTrigger: { trigger: ".pb-12", start: "top 85%" }, 
                     scale: 1, opacity: 1, filter: "blur(0px)", y: 0, duration: 1.2, stagger: 0.15, ease: "power2.out" 
@@ -850,7 +811,9 @@
                     marqueeContainer.addEventListener('mouseleave', touchEnd);
                     marqueeContainer.addEventListener('touchend', touchEnd);
                     marqueeContainer.addEventListener('mousemove', touchMove);
-                    marqueeContainer.addEventListener('touchmove', touchMove, {passive: false});
+                    
+                    // Fixed {passive: false} to {passive: true} so it never blocks native vertical mobile scrolling
+                    marqueeContainer.addEventListener('touchmove', touchMove, {passive: true});
 
                     function touchStart(event) {
                         isDragging = true; 
@@ -889,4 +852,3 @@
     </script>
 </body>
 </html>
-
