@@ -25,7 +25,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
 
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="assets/logo.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -84,29 +84,17 @@
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* === GPU LAYER ACCELERATION === */
-        .video-gpu-layer { 
-            transform: translateZ(0); 
-            -webkit-transform: translate3d(0,0,0); 
-            backface-visibility: hidden; 
-            -webkit-backface-visibility: hidden; 
+        /* Jitter-Free GPU Background */
+        .video-background-layer { 
             will-change: transform;
+            transform: translateZ(0); 
         }
 
-        .content-gpu-layer {
-            transform: translateZ(0);
-            -webkit-transform: translate3d(0,0,0);
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-            perspective: 1000;
-        }
-
-        /* === NAVIGATION === */
+        /* === NAVBAR ARCHITECTURE === */
         .nav-fixed-layer {
             position: fixed; top: -1px; left: 0; width: 100%; padding-top: 1px;
-            z-index: 100 !important; transform: translate3d(0,0,0); backface-visibility: hidden;
+            z-index: 100 !important; transform: translateZ(0); backface-visibility: hidden;
             transition: background-color 0.4s ease, height 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
-            will-change: height, background-color, backdrop-filter;
         }
 
         .nav-transparent { background: rgba(0, 0, 0, 0.1); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-bottom: 1px solid rgba(253, 253, 253, 0.05); height: 7.5rem; }
@@ -126,7 +114,6 @@
         .dha-text { transition: all 0.5s ease; opacity: 1; transform: translateY(0); max-height: 20px; margin-top: 0.3rem; display: block; }
         .nav-scrolled .dha-text { opacity: 0; transform: translateY(-20px); max-height: 0; margin: 0; }
 
-        /* === UI ELEMENTS === */
         .book-btn-perfect { position: relative; z-index: 100; overflow: hidden; border-radius: 9999px; background: linear-gradient(135deg, #DBC9B1 0%, #F9BDC6 100%); background-size: 200% auto; padding: 0.5rem 1rem; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 8px 20px -5px rgba(249, 189, 198, 0.5); display: flex; align-items: center; justify-content: center; }
         .book-btn-perfect:hover { transform: scale(1.05); background-position: right center; box-shadow: 0 15px 25px -5px rgba(232, 138, 159, 0.6); }
         .book-btn-perfect span { color: #4B5343; font-weight: 700; transition: color 0.4s ease; text-shadow: 0 1px 2px rgba(255,255,255,0.3); }
@@ -136,15 +123,15 @@
         .hero-text-shadow { text-shadow: 0 4px 30px rgba(0,0,0,0.6); }
         .text-liquid-gold { background: linear-gradient(to bottom, #ffffff 10%, #DBC9B1 40%, #E88A9F 80%, #4B5343 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); }
         
-        .tilt-card { transform-style: flat; transition: transform 0.1s ease-out; z-index: 10; position: relative; backface-visibility: hidden; will-change: transform; }
+        .tilt-card { transform-style: flat; transition: transform 0.1s ease-out; z-index: 10; position: relative; }
         @media (hover: hover) and (pointer: fine) { .tilt-card { transform-style: preserve-3d; } }
         
-        .reveal-on-scroll { opacity: 0; transform: translateY(40px); will-change: opacity, transform; }
-        .hero-bubble { opacity: 0; transform: translateY(20px) scale(0.8); filter: blur(10px); will-change: opacity, transform, filter; }
+        .reveal-on-scroll { opacity: 0; transform: translateY(40px); }
+        .hero-bubble { opacity: 0; transform: translateY(20px) scale(0.8); filter: blur(10px); }
         .apple-pop { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; }
         .apple-pop:hover { transform: scale(1.05); box-shadow: 0 30px 60px -12px rgba(232, 138, 159, 0.2); }
         .treatment-overlay { background: linear-gradient(to top, rgba(75,83,67,0.95) 0%, rgba(92,77,68,0.5) 50%, rgba(0,0,0,0) 100%); }
-        .treatment-icon-anim { opacity: 0; transform: translateY(20px); will-change: opacity, transform; }
+        .treatment-icon-anim { opacity: 0; transform: translateY(20px); }
 
         .geo-tab-container { display: flex; justify-content: center; gap: 8rem; width: 100%; position: relative; z-index: 30; padding-top: 4rem; }
         .geo-tab { position: relative; letter-spacing: 0.1em; text-transform: uppercase; padding-bottom: 8px; cursor: default; }
@@ -156,16 +143,19 @@
         .smile-notch { -webkit-mask-image: radial-gradient(ellipse 220px 35px at 50% 0%, transparent 98%, black 100%); mask-image: radial-gradient(ellipse 220px 35px at 50% 0%, transparent 98%, black 100%); }
 
         .map-layer { transition: opacity 0.5s ease-in-out; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-        .map-container-fix { transform: translateZ(0); -webkit-transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; -webkit-mask-image: -webkit-radial-gradient(white, black); }
+        .map-container-fix { -webkit-mask-image: -webkit-radial-gradient(white, black); }
 
+        /* FAQ Styling - Ensures text ONLY turns pink when clicked/open */
         .faq-content { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .faq-open .faq-content { max-height: 300px; opacity: 1; margin-top: 0.5rem; }
-        .faq-icon { transition: transform 0.3s ease; } .faq-open .faq-icon { transform: rotate(180deg); color: #E88A9F; }
+        .faq-icon { transition: transform 0.3s ease; } 
+        .faq-open .faq-icon { transform: rotate(180deg); color: #E88A9F; }
+        .faq-open .faq-title { color: #E88A9F; } /* This applies the pink color to the text ONLY when open */
 
         .marquee-container { overflow: hidden; width: 100%; cursor: grab; position: relative; touch-action: pan-y; user-select: none; -webkit-user-select: none; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
         .marquee-container:active { cursor: grabbing; }
-        .marquee-track { display: flex; gap: 24px; width: max-content; will-change: transform; transform: translate3d(0,0,0); backface-visibility: hidden; }
-        .marquee-track > div { transform: translateZ(0); backface-visibility: hidden; -webkit-font-smoothing: subpixel-antialiased; }
+        .marquee-track { display: flex; gap: 24px; width: max-content; will-change: transform; transform: translateZ(0); }
+        .marquee-track > div { transform: translateZ(0); -webkit-font-smoothing: subpixel-antialiased; }
 
         .premium-gradient-bg { background: linear-gradient(135deg, #4B5343 0%, #3a4133 50%, #5C4D44 100%); background-size: 200% 200%; animation: smoothPan 15s ease infinite alternate; }
         @keyframes smoothPan { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
@@ -190,6 +180,7 @@
         #mobile-fab { transform: translateY(150%); opacity: 0; pointer-events: none; transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
         #mobile-fab.fab-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
 
+        /* Modal Styles */
         .modal-overlay { position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; display: flex; align-items: center; justify-content: center; }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
         .modal-content { background: #FDFDFD; border-radius: 20px; width: 90%; max-width: 600px; max-height: 85vh; overflow-y: auto; padding: 2rem; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3); border: 1px solid #DBC9B1; }
@@ -271,9 +262,9 @@
         </a>
     </div>
 
-    <div class="fixed top-0 left-0 w-full h-screen z-0 overflow-hidden bg-brandDark video-gpu-layer">
+    <div class="fixed top-0 left-0 w-full h-[100dvh] z-0 overflow-hidden bg-brandDark video-background-layer pointer-events-none">
         <div class="absolute inset-0 z-0 overflow-hidden hidden md:block">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1920" alt="Luxury Wellness Spa" class="w-full h-full object-cover object-[center_35%] opacity-85 animate-cinematic" fetchpriority="high" loading="eager" width="1920" height="1080">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1920" alt="Luxury Wellness Spa" class="w-full h-full object-cover object-[center_35%] opacity-85 animate-cinematic" fetchpriority="high" loading="eager">
         </div>
         <div class="absolute inset-0 z-0 overflow-hidden md:hidden">
             <video autoplay loop muted playsinline webkit-playsinline preload="auto" poster="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover opacity-85">
@@ -283,11 +274,11 @@
         <div class="absolute inset-0 z-0 bg-black/40"></div>
     </div>
 
-    <div class="relative w-full z-10 flex flex-col content-gpu-layer">
+    <div class="relative w-full z-10 flex flex-col">
         
-        <header class="relative w-full min-h-screen flex flex-col items-center justify-center px-6 py-32 pointer-events-none text-center">
+        <header class="relative w-full min-h-[100dvh] flex flex-col items-center justify-center px-6 py-32 pointer-events-none text-center">
             <div class="relative z-20 pointer-events-auto w-full max-w-5xl">
-                <div class="hero-anim inline-flex items-center gap-2 bg-base/10 border border-base/20 px-5 py-1.5 rounded-full shadow-2xl mb-8 mx-auto cursor-default md:backdrop-blur-md">
+                <div class="hero-anim inline-flex items-center gap-2 bg-base/10 backdrop-blur-md border border-base/20 px-5 py-1.5 rounded-full shadow-2xl mb-8 mx-auto cursor-default">
                     <i class="ph-fill ph-leaf text-brandRose text-lg"></i>
                     <span class="text-[10px] md:text-[11px] font-bold text-white uppercase tracking-[0.15em] drop-shadow-md">By Women, For Women</span>
                 </div>
@@ -313,25 +304,25 @@
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-10 md:gap-12">
                         <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
                             <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" alt="Glow Spa" class="w-full h-full object-cover" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" alt="Glow Spa" class="w-full h-full object-cover" loading="lazy" decoding="async">
                             </div>
                             <span class="font-serif text-lg text-brandDark tracking-wide text-center">Glow Studio<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Spa <span class="font-sans font-light opacity-70">&</span> Facials</span></span>
                         </div>
                         <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
                             <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="Sync Yoga" class="w-full h-full object-cover" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800" alt="Sync Yoga" class="w-full h-full object-cover" loading="lazy" decoding="async">
                             </div>
                             <span class="font-serif text-lg text-brandDark tracking-wide text-center leading-tight">Sync Studio<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Yoga <span class="font-sans font-light opacity-70">&</span> Pilates</span></span>
                         </div>
                         <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
                             <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800" alt="Desi Maalish" class="w-full h-full object-cover" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800" alt="Desi Maalish" class="w-full h-full object-cover" loading="lazy" decoding="async">
                             </div>
                             <span class="font-serif text-lg text-brandDark tracking-wide text-center">Desi Maalish<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Tradition</span></span>
                         </div>
                         <div class="flex flex-col items-center gap-4 cursor-default hero-bubble group">
                             <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden ring-fit apple-pop shadow-xl relative cursor-pointer border-[3px] border-brandSand/30">
-                                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=800" alt="Community" class="w-full h-full object-cover" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=800" alt="Community" class="w-full h-full object-cover" loading="lazy" decoding="async">
                             </div>
                             <span class="font-serif text-lg text-brandDark tracking-wide text-center">Community<br><span class="text-[10px] text-brandBrown uppercase tracking-widest font-sans">Safe Haven</span></span>
                         </div>
@@ -358,7 +349,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                         <article class="tilt-card service-card group relative bg-brandDark h-[450px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer reveal-on-scroll apple-pop border border-brandSand/20">
-                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=1200" alt="Sync Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=1200" alt="Sync Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="lazy" decoding="async">
                             <div class="absolute inset-0 treatment-overlay z-10"></div>
                             <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-20">
                                 <div class="treatment-icon-anim w-12 h-12 bg-base rounded-full flex items-center justify-center mb-4 group-hover:bg-brandSand transition-colors duration-500 shadow-lg">
@@ -374,7 +365,7 @@
                         </article>
 
                         <article class="tilt-card service-card group relative bg-brandDark h-[450px] md:h-[500px] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl cursor-pointer reveal-on-scroll apple-pop border border-brandSand/20">
-                            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200" alt="Glow Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200" alt="Glow Studio" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70" loading="lazy" decoding="async">
                             <div class="absolute inset-0 treatment-overlay z-10"></div>
                             <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-20">
                                 <div class="treatment-icon-anim w-12 h-12 bg-base rounded-full flex items-center justify-center mb-4 group-hover:bg-brandSand transition-colors duration-500 shadow-lg">
@@ -436,7 +427,7 @@
 
             <section id="memberships" class="pt-12 pb-24 bg-base relative z-20 -mt-px md:px-6">
                 
-                <div class="max-w-4xl mx-auto mb-10 bg-gradient-to-r from-brandSand/10 via-brandBlush/10 to-brandSand/10 border border-brandBlush/30 rounded-2xl p-6 md:p-8 text-center reveal-on-scroll shadow-sm mx-4 md:mx-auto">
+                <div class="max-w-4xl mx-auto mb-16 md:mb-20 bg-gradient-to-r from-brandSand/10 via-brandBlush/10 to-brandSand/10 border border-brandBlush/30 rounded-2xl p-6 md:p-8 text-center reveal-on-scroll shadow-sm mx-4 md:mx-auto">
                     <p class="text-brandRose text-xs font-bold uppercase tracking-[0.2em] mb-2 flex items-center justify-center gap-2">
                         <i class="ph-fill ph-moon-stars text-lg animate-pulse-slow"></i> Ramzan 2026 • Pre-Iftar Classes
                     </p>
@@ -563,8 +554,8 @@
                     <div class="space-y-3">
                         <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
                             <div class="p-5 flex justify-between items-center">
-                                <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">How do I join the community or book a session?</span>
-                                <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
+                                <span class="font-serif text-lg text-brandDark transition-colors faq-title">How do I join the community or book a session?</span>
+                                <i class="ph-bold ph-caret-down text-brandSand faq-icon transition-colors"></i>
                             </div>
                             <div class="faq-content px-5">
                                 <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Simply click the "Join The Community" button to connect with our front desk concierge via WhatsApp. We highly recommend booking at least 24 hours in advance to secure your preferred sanctuary slot.</p>
@@ -573,8 +564,8 @@
 
                         <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
                             <div class="p-5 flex justify-between items-center">
-                                <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">Do I need to bring anything with me?</span>
-                                <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
+                                <span class="font-serif text-lg text-brandDark transition-colors faq-title">Do I need to bring anything with me?</span>
+                                <i class="ph-bold ph-caret-down text-brandSand faq-icon transition-colors"></i>
                             </div>
                             <div class="faq-content px-5">
                                 <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Not at all. Our sanctuary provides everything required for your curated experience, including plush robes, comfortable slippers, and premium luxury toiletries. Just bring a desire to disconnect.</p>
@@ -583,8 +574,8 @@
 
                         <div class="bg-white rounded-lg border border-brandSand/30 overflow-hidden cursor-pointer group reveal-on-scroll shadow-sm hover:shadow-md transition-shadow outline-none -webkit-tap-highlight-color-transparent" onclick="toggleFaq(this)">
                             <div class="p-5 flex justify-between items-center">
-                                <span class="font-serif text-lg text-brandDark group-hover:text-brandRose transition-colors">Are your therapists certified?</span>
-                                <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
+                                <span class="font-serif text-lg text-brandDark transition-colors faq-title">Are your therapists certified?</span>
+                                <i class="ph-bold ph-caret-down text-brandSand faq-icon transition-colors"></i>
                             </div>
                             <div class="faq-content px-5">
                                 <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Absolutely. All of our holistic healers, spa therapists, and yoga instructors are highly certified professionals with extensive experience in premium wellness therapies.</p>
@@ -647,7 +638,7 @@
                         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brandBrown/40 rounded-full blur-[100px] pointer-events-none"></div>
                         
                         <div class="geo-tab-container">
-                            <div class="geo-tab active font-serif text-lg md:text-xl text-brandSand">Islamabad Sanctuary</div>
+                            <div class="geo-tab active font-serif text-lg md:text-xl text-brandSand">Islamabad Club</div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 mt-12">
@@ -755,8 +746,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 
     <script>
-        // Removed the body opacity 0 load block so the page paints instantly
-        
         document.addEventListener('DOMContentLoaded', () => {
             
             // --- Navigation & Menu Logic ---
@@ -852,7 +841,12 @@
                 });
             }
 
-            window.toggleFaq = function(element) { const isOpened = element.classList.contains('faq-open'); document.querySelectorAll('.faq-open').forEach(el => el.classList.remove('faq-open')); if (!isOpened) element.classList.add('faq-open'); }
+            // --- FAQ Toggle Logic ---
+            window.toggleFaq = function(element) { 
+                const isOpened = element.classList.contains('faq-open'); 
+                document.querySelectorAll('.faq-open').forEach(el => el.classList.remove('faq-open')); 
+                if (!isOpened) element.classList.add('faq-open'); 
+            }
 
             // --- Infinite Marquee Logic ---
             const marqueeContainer = document.getElementById('marqueeContainer');
@@ -899,7 +893,7 @@
                 }, 150);
             }
 
-            // --- Jump-Free Membership Carousel Logic ---
+            // --- Membership Carousel Auto-Scroll Logic ---
             const memberTrack = document.getElementById('membership-track');
             const dots = document.querySelectorAll('.carousel-dots .dot');
             
@@ -932,11 +926,9 @@
                 dots.forEach((dot, index) => {
                     dot.addEventListener('click', () => {
                         pauseAutoScroll(); 
-                        
                         const cardElement = cards[index];
                         const centerPos = cardElement.offsetLeft - (memberTrack.clientWidth / 2) + (cardElement.offsetWidth / 2);
                         memberTrack.scrollTo({ left: centerPos, behavior: 'smooth' });
-                        
                         resumeAutoScrollAfterDelay(); 
                     });
                 });
@@ -963,7 +955,6 @@
                         });
 
                         let nextIndex = activeIndex + 1;
-                        
                         if (nextIndex >= cards.length) {
                             memberTrack.scrollTo({ left: 0, behavior: 'smooth' });
                         } else {
