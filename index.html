@@ -14,7 +14,7 @@
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1920" media="(min-width: 768px)">
 
     <title>Sen’i Wellness Club | Luxury Spa & Women's Studio in Islamabad</title>
-    <meta name="description" content="A holistic safe haven by women, for women. Experience Sen'i Glow Studio and Sen'i Sync Studio in F-10 Islamabad.">
+    <meta name="description" content="A holistic safe haven by women, for women. Experience Sen'i Glow Studio and Sen'i Sync Studio in F-8 Islamabad.">
     
     <meta property="og:type" content="business.business">
     <meta property="og:title" content="✨ Sen’i Wellness Club | By Women, For Women">
@@ -48,6 +48,7 @@
                         'spin-slow': 'spin 12s linear infinite', 
                         'cinematic': 'cinematicMove 20s ease-in-out infinite alternate',
                         'gradient-x': 'gradientX 3s ease infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: { 
                         cinematicMove: { '0%': { transform: 'scale(1.0) translate3d(0, 0, 0)' }, '100%': { transform: 'scale(1.15) translate3d(-2%, 0, 0)' } },
@@ -59,7 +60,6 @@
     </script>
 
     <style>
-        /* === CORE STABILITY === */
         html { scroll-behavior: smooth; }
         body { 
             background-color: #FDFDFD; color: #4B5343; 
@@ -71,7 +71,7 @@
         }
         body.loaded { opacity: 1; }
 
-        a[href^="tel"] {
+        a[href^="tel"], a[href^="mailto"] {
             text-decoration: underline !important;
             text-decoration-color: #DBC9B1 !important;
             text-underline-offset: 4px !important;
@@ -82,103 +82,51 @@
         ::-webkit-scrollbar-track { background: #FDFDFD; }
         ::-webkit-scrollbar-thumb { background: #E88A9F; border-radius: 4px; }
 
-        .video-gpu-layer {
-            transform: translateZ(0);
-            -webkit-transform: translateZ(0);
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* === NAVBAR ARCHITECTURE === */
+        .video-gpu-layer { transform: translateZ(0); -webkit-transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+
         .nav-fixed-layer {
             position: fixed; top: -1px; left: 0; width: 100%; padding-top: 1px;
-            z-index: 100 !important;
-            transform: translate3d(0,0,0);
-            backface-visibility: hidden;
+            z-index: 100 !important; transform: translate3d(0,0,0); backface-visibility: hidden;
             transition: background-color 0.4s ease, height 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
             will-change: height, background-color, backdrop-filter;
         }
 
-        .nav-transparent { 
-            background: rgba(0, 0, 0, 0.1); 
-            backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-            border-bottom: 1px solid rgba(253, 253, 253, 0.05); height: 7.5rem; 
-        }
-
+        .nav-transparent { background: rgba(0, 0, 0, 0.1); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-bottom: 1px solid rgba(253, 253, 253, 0.05); height: 7.5rem; }
         .nav-transparent .nav-text { color: #ffffff !important; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
         .nav-transparent .status-text-open { color: #DBC9B1; } 
 
-        .nav-scrolled { 
-            background: rgba(253, 253, 253, 0.72); 
-            backdrop-filter: blur(20px) saturate(180%); 
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(219, 201, 177, 0.3); 
-            box-shadow: 0 4px 30px rgba(75, 83, 67, 0.05); 
-            height: 4.5rem; 
-        }
-        
+        .nav-scrolled { background: rgba(253, 253, 253, 0.72); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid rgba(219, 201, 177, 0.3); box-shadow: 0 4px 30px rgba(75, 83, 67, 0.05); height: 4.5rem; }
         .nav-scrolled .nav-text { color: #4B5343 !important; text-shadow: none; }
         .nav-scrolled .status-text-open { color: #4B5343 !important; }
 
-        .logo-circle { 
-            width: 6rem; height: 6rem; padding: 0.5rem; background: #FDFDFD; border-radius: 9999px; 
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3); 
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); 
-            position: relative; z-index: 60; 
-        }
-        .nav-scrolled .logo-circle { 
-            width: 5rem; height: 5rem; padding: 0.35rem; 
-            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1); 
-            transform: translateY(12px); 
-        }
+        .logo-circle { width: 6rem; height: 6rem; padding: 0.5rem; background: #FDFDFD; border-radius: 9999px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3); transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; z-index: 60; }
+        .nav-scrolled .logo-circle { width: 5rem; height: 5rem; padding: 0.35rem; box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1); transform: translateY(12px); }
 
-        .brand-ring { 
-            position: absolute; inset: -1.5px; border-radius: 9999px; 
-            background: conic-gradient(from 0deg, #4B5343, #DBC9B1, #E88A9F, #DBC9B1, #4B5343); 
-            opacity: 1; transform: scale(1); transition: all 0.5s ease; z-index: 30; 
-            pointer-events: none; animation: spin-slow 12s linear infinite; 
-            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 2.5px));
-            mask: radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 2.5px));
-        }
+        .brand-ring { position: absolute; inset: -1.5px; border-radius: 9999px; background: conic-gradient(from 0deg, #4B5343, #DBC9B1, #E88A9F, #DBC9B1, #4B5343); opacity: 1; transform: scale(1); transition: all 0.5s ease; z-index: 30; pointer-events: none; animation: spin-slow 12s linear infinite; -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 2.5px)); mask: radial-gradient(farthest-side, transparent calc(100% - 4px), black calc(100% - 2.5px)); }
         .nav-scrolled .brand-ring { transform: scale(0.6); opacity: 0; }
 
         .dha-text { transition: all 0.5s ease; opacity: 1; transform: translateY(0); max-height: 20px; margin-top: 0.3rem; display: block; }
         .nav-scrolled .dha-text { opacity: 0; transform: translateY(-20px); max-height: 0; margin: 0; }
 
-        .book-btn-perfect {
-            position: relative; z-index: 100; overflow: hidden; border-radius: 9999px;
-            background: linear-gradient(135deg, #DBC9B1 0%, #F9BDC6 100%);
-            background-size: 200% auto;
-            padding: 0.5rem 1rem; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 8px 20px -5px rgba(249, 189, 198, 0.5); display: flex; align-items: center; justify-content: center;
-        }
+        .book-btn-perfect { position: relative; z-index: 100; overflow: hidden; border-radius: 9999px; background: linear-gradient(135deg, #DBC9B1 0%, #F9BDC6 100%); background-size: 200% auto; padding: 0.5rem 1rem; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 8px 20px -5px rgba(249, 189, 198, 0.5); display: flex; align-items: center; justify-content: center; }
         .book-btn-perfect:hover { transform: scale(1.05); background-position: right center; box-shadow: 0 15px 25px -5px rgba(232, 138, 159, 0.6); }
         .book-btn-perfect span { color: #4B5343; font-weight: 700; transition: color 0.4s ease; text-shadow: 0 1px 2px rgba(255,255,255,0.3); }
         @media (min-width: 768px) { .book-btn-perfect { padding: 0.75rem 2rem; } }
 
-        .icon-gradient-brand {
-            background: linear-gradient(135deg, #DBC9B1 0%, #E88A9F 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-        
+        .icon-gradient-brand { background: linear-gradient(135deg, #DBC9B1 0%, #E88A9F 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: inline-block; }
         .hero-text-shadow { text-shadow: 0 4px 30px rgba(0,0,0,0.6); }
-        
-        .text-liquid-gold { 
-            background: linear-gradient(to bottom, #ffffff 10%, #DBC9B1 40%, #E88A9F 80%, #4B5343 100%); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); 
-        }
+        .text-liquid-gold { background: linear-gradient(to bottom, #ffffff 10%, #DBC9B1 40%, #E88A9F 80%, #4B5343 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); }
         
         .tilt-card { transform-style: flat; transition: transform 0.1s ease-out; z-index: 10; position: relative; backface-visibility: hidden; will-change: transform; }
         @media (hover: hover) and (pointer: fine) { .tilt-card { transform-style: preserve-3d; } }
         
         .reveal-on-scroll { opacity: 0; transform: translateY(40px); will-change: opacity, transform; }
         .hero-bubble { opacity: 0; transform: translateY(20px) scale(0.8); filter: blur(10px); will-change: opacity, transform, filter; }
-        
         .apple-pop { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; }
         .apple-pop:hover { transform: scale(1.05); box-shadow: 0 30px 60px -12px rgba(232, 138, 159, 0.2); }
-        
         .treatment-overlay { background: linear-gradient(to top, rgba(75,83,67,0.95) 0%, rgba(92,77,68,0.5) 50%, rgba(0,0,0,0) 100%); }
         .treatment-icon-anim { opacity: 0; transform: translateY(20px); will-change: opacity, transform; }
 
@@ -186,13 +134,10 @@
         .geo-tab { position: relative; letter-spacing: 0.1em; text-transform: uppercase; padding-bottom: 8px; cursor: default; }
         .geo-tab::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%) scaleX(1); width: 100%; height: 2px; background: #DBC9B1; }
         .geo-tab.active { color: #DBC9B1; text-shadow: 0 0 20px rgba(219, 201, 177, 0.4); }
-        
         .content-visible { opacity: 1; transform: translateY(0); display: block; transition: all 0.4s ease; }
         
-        .visit-card-notch { 
-            -webkit-mask-image: radial-gradient(circle at 50% 0, transparent 40px, black 41px); 
-            mask-image: radial-gradient(circle at 50% 0, transparent 40px, black 41px); 
-        }
+        .visit-card-notch { -webkit-mask-image: radial-gradient(circle at 50% 0, transparent 40px, black 41px); mask-image: radial-gradient(circle at 50% 0, transparent 40px, black 41px); }
+        .smile-notch { -webkit-mask-image: radial-gradient(ellipse 220px 35px at 50% 0%, transparent 98%, black 100%); mask-image: radial-gradient(ellipse 220px 35px at 50% 0%, transparent 98%, black 100%); }
 
         .map-layer { transition: opacity 0.5s ease-in-out; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
         .map-container-fix { transform: translateZ(0); -webkit-transform: translateZ(0); backface-visibility: hidden; -webkit-backface-visibility: hidden; -webkit-mask-image: -webkit-radial-gradient(white, black); }
@@ -201,32 +146,23 @@
         .faq-open .faq-content { max-height: 300px; opacity: 1; margin-top: 0.5rem; }
         .faq-icon { transition: transform 0.3s ease; } .faq-open .faq-icon { transform: rotate(180deg); color: #E88A9F; }
 
-        .marquee-container { 
-            overflow: hidden; width: 100%; cursor: grab; position: relative; 
-            touch-action: pan-y; user-select: none; -webkit-user-select: none;
-            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-        }
+        .marquee-container { overflow: hidden; width: 100%; cursor: grab; position: relative; touch-action: pan-y; user-select: none; -webkit-user-select: none; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
         .marquee-container:active { cursor: grabbing; }
-        .marquee-track { 
-            display: flex; gap: 24px; width: max-content; 
-            will-change: transform; transform: translate3d(0,0,0);
-            backface-visibility: hidden;
-        }
+        .marquee-track { display: flex; gap: 24px; width: max-content; will-change: transform; transform: translate3d(0,0,0); backface-visibility: hidden; }
         .marquee-track > div { transform: translateZ(0); backface-visibility: hidden; -webkit-font-smoothing: subpixel-antialiased; }
 
-        .premium-gradient-bg {
-            background: linear-gradient(135deg, #4B5343 0%, #3a4133 50%, #5C4D44 100%);
-            background-size: 200% 200%;
-            animation: smoothPan 15s ease infinite alternate;
-        }
+        .premium-gradient-bg { background: linear-gradient(135deg, #4B5343 0%, #3a4133 50%, #5C4D44 100%); background-size: 200% 200%; animation: smoothPan 15s ease infinite alternate; }
         @keyframes smoothPan { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+
+        .carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(219, 201, 177, 0.4); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; }
+        .dot.active { background: #E88A9F; transform: scale(1.4); }
+        @media (min-width: 768px) { .carousel-dots { display: none; } }
 
         #menu-backdrop { opacity: 0; pointer-events: none; transition: opacity 0.5s ease; }
         #side-drawer { right: 0; transform: translateX(100%); transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
         body.menu-open #menu-backdrop { opacity: 1; pointer-events: auto; }
         body.menu-open #side-drawer { transform: translateX(0); }
-        
         .menu-link { transform: translateX(40px); opacity: 0; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); outline: none; -webkit-tap-highlight-color: transparent; }
         body.menu-open .menu-link { transform: translateX(0); opacity: 1; }
         body.menu-open .menu-link:nth-child(1) { transition-delay: 0.10s; }
@@ -235,13 +171,13 @@
         body.menu-open .menu-link:nth-child(4) { transition-delay: 0.25s; }
         body.menu-open .menu-link:nth-child(5) { transition-delay: 0.30s; }
 
-        #mobile-fab {
-            transform: translateY(150%); opacity: 0; pointer-events: none;
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        #mobile-fab.fab-visible {
-            transform: translateY(0); opacity: 1; pointer-events: auto;
-        }
+        #mobile-fab { transform: translateY(150%); opacity: 0; pointer-events: none; transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        #mobile-fab.fab-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+
+        .modal-overlay { position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); opacity: 0; pointer-events: none; transition: opacity 0.4s ease; display: flex; align-items: center; justify-content: center; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-content { background: #FDFDFD; border-radius: 20px; width: 90%; max-width: 600px; max-height: 85vh; overflow-y: auto; padding: 2rem; transform: translateY(30px) scale(0.95); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3); border: 1px solid #DBC9B1; }
+        .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
     </style>
 </head>
 <body class="antialiased font-sans relative selection:bg-brandBlush selection:text-brandDark bg-brandDark overflow-x-hidden">
@@ -290,7 +226,7 @@
                             <img src="assets/logo.jpg" alt="Logo" class="w-full h-full object-contain p-0.5" width="200" height="200">
                         </div>
                     </div>
-                    <span class="dha-text text-[8px] uppercase tracking-[0.2em] md:tracking-[0.3em] nav-text opacity-90 group-hover:opacity-100 font-bold drop-shadow-md mt-1">F-10/2 ISLAMABAD</span>
+                    <span class="dha-text text-[8px] uppercase tracking-[0.2em] md:tracking-[0.3em] nav-text opacity-90 group-hover:opacity-100 font-bold drop-shadow-md mt-1">F-8 ISLAMABAD</span>
                 </a>
             </div>
             
@@ -433,7 +369,7 @@
                                     <p class="text-brandSand text-xs font-bold uppercase tracking-wider mb-4">Spa <span class="font-sans font-light opacity-70">&</span> Aesthetics</p>
                                     <p class="text-brandSand/80 text-[15px] font-medium leading-relaxed mb-6 drop-shadow-sm">Premium facial treatments, full-body exfoliation, prenatal massage, and authentic Desi Maalish.</p>
                                 </div>
-                                <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Glow%20Studio." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Treatment <i class="ph-bold ph-arrow-right"></i></a>
+                                <a href="https://wa.me/923335188989?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20the%20Glow%20Studio." target="_blank" class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-base hover:text-brandBlush transition-colors outline-none">Book Treatment <i class="ph-bold ph-arrow-right"></i></a>
                             </div>
                         </article>
                     </div>
@@ -482,18 +418,123 @@
                 </div>
             </section>
 
-            <section id="memberships" class="py-24 bg-base relative z-20 -mt-px px-4 md:px-6">
-                <div class="max-w-5xl mx-auto premium-gradient-bg rounded-3xl p-10 md:p-16 text-center shadow-2xl relative overflow-hidden border border-brandSand/20 reveal-on-scroll">
-                    <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-brandBrown/30 rounded-full blur-[80px] pointer-events-none"></div>
-                    <div class="relative z-10">
+            <section id="memberships" class="pt-12 pb-24 bg-base relative z-20 -mt-px md:px-6">
+                
+                <div class="max-w-4xl mx-auto mb-10 bg-gradient-to-r from-brandSand/10 via-brandBlush/10 to-brandSand/10 border border-brandBlush/30 rounded-2xl p-6 md:p-8 text-center reveal-on-scroll shadow-sm mx-4 md:mx-auto">
+                    <p class="text-brandRose text-xs font-bold uppercase tracking-[0.2em] mb-2 flex items-center justify-center gap-2">
+                        <i class="ph-fill ph-moon-stars text-lg animate-pulse-slow"></i> Ramzan 2026 • Pre-Iftar Classes
+                    </p>
+                    <h4 class="font-serif text-2xl md:text-3xl text-brandDark mb-3">Honour movement that is unforced.</h4>
+                    <p class="text-[14px] text-brandBrown/90 max-w-2xl mx-auto mb-5 leading-relaxed">
+                        Join us from Feb 15 - Mar 15 for 60 minutes of mindful movement. Yogalates, Yoga & Meditation, and Strength & Conditioning tailored for the sacred month.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-3 md:gap-6 text-xs text-brandDark font-medium tracking-wide">
+                        <span class="bg-base px-4 py-1.5 rounded-full border border-brandSand/30 shadow-sm">Registration: Rs. 5,000</span>
+                        <a href="https://wa.me/923058852525?text=Hi,%20I%20want%20to%20reserve%20my%20spot%20for%20the%20Ramzan%20Pre-Iftar%20Classes." target="_blank" class="text-brandRose hover:text-brandDark underline underline-offset-4 decoration-brandRose/40 transition-colors uppercase tracking-widest font-bold">Reserve Spot</a>
+                    </div>
+                </div>
+
+                <div class="max-w-6xl mx-auto premium-gradient-bg rounded-3xl pt-8 pb-10 shadow-2xl relative overflow-hidden border border-brandSand/20 reveal-on-scroll smile-notch mx-4 md:mx-auto">
+                    
+                    <div class="relative z-10 text-center mb-10 mt-4 px-6">
                         <h3 class="text-brandSand text-xs font-bold uppercase tracking-[0.3em] mb-4">The Sen'i Woman</h3>
-                        <h2 class="font-serif text-3xl md:text-5xl text-base mb-6 drop-shadow-md">Exclusive Memberships</h2>
-                        <p class="text-base text-brandSand/90 leading-relaxed font-light mb-10 max-w-2xl mx-auto">
-                            Join an elite community of like-minded women in Islamabad. Enjoy unlimited access to curated wellness programs, monthly community events, and preferential member-only rates across all sanctuary services.
+                        <h2 class="font-serif text-3xl md:text-5xl text-base mb-6 drop-shadow-md">Sync Studio Menu</h2>
+                        <p class="text-base text-brandSand/90 leading-relaxed font-light mb-4 max-w-2xl mx-auto">
+                            Embracing progress, not perfection. A space to move with purpose and ease. We crave like-minded individuals looking to prioritize themselves.
                         </p>
-                        <a href="https://wa.me/923058852525?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20The%20Sen'i%20Woman%20Membership." target="_blank" class="inline-flex items-center gap-2 border border-brandSand/40 px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brandSand hover:text-brandDark transition-all duration-300 outline-none text-brandSand">
-                            Inquire About Membership <i class="ph-bold ph-arrow-right"></i>
-                        </a>
+                        <p class="text-brandBlush text-[10px] md:text-xs font-bold uppercase tracking-widest border border-brandBlush/40 inline-block px-4 py-2 rounded-full">
+                            *One-time membership fee: PKR 25,000
+                        </p>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-3 mb-6 md:hidden text-brandSand/80 animate-pulse-slow relative z-10">
+                        <i class="ph-bold ph-arrows-left-right text-xl"></i>
+                        <span class="text-[10px] uppercase tracking-[0.25em] font-bold">Swipe to Explore</span>
+                    </div>
+
+                    <div class="relative z-10 w-full overflow-hidden">
+                        <div id="membership-track" class="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar md:grid md:grid-cols-2 lg:grid-cols-4 pb-4 px-[9vw] md:px-14">
+                            
+                            <div class="membership-card w-[82vw] md:w-auto flex-shrink-0 snap-center bg-brandDark border border-brandSand/20 rounded-2xl p-6 hover:bg-[#3A4232] transition-colors flex flex-col justify-between shadow-lg">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-serif text-2xl text-base">01</h4>
+                                    </div>
+                                    <h5 class="text-brandSand font-bold text-lg mb-1 tracking-wide">8 SESSIONS</h5>
+                                    <p class="text-[10px] text-base/60 uppercase tracking-widest mb-6">Per Month • One Trainer</p>
+                                    <p class="text-sm text-base/80 font-light leading-relaxed mb-8">
+                                        Perfect for establishing a balanced, steady routine twice a week in our sanctuary.
+                                    </p>
+                                </div>
+                                <div class="border-t border-brandSand/20 pt-4">
+                                    <p class="text-2xl font-serif text-base mb-1">Rs 25,000</p>
+                                    <p class="text-[10px] text-brandSand/70 uppercase tracking-widest mb-4">Monthly Subscription</p>
+                                    <a href="https://wa.me/923058852525?text=Hi,%20I%20want%20to%20enroll%20in%20the%208%20Sessions/Month%20Program." class="block w-full text-center border border-brandSand/50 py-2 rounded-full text-xs text-brandSand uppercase tracking-widest hover:bg-brandSand hover:text-brandDark transition-colors">Select</a>
+                                </div>
+                            </div>
+
+                            <div class="membership-card w-[82vw] md:w-auto flex-shrink-0 snap-center bg-brandBrown border border-brandSand/20 rounded-2xl p-6 hover:bg-[#4C4038] transition-colors flex flex-col justify-between shadow-lg">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-serif text-2xl text-base">02</h4>
+                                    </div>
+                                    <h5 class="text-brandSand font-bold text-lg mb-1 tracking-wide">12 SESSIONS</h5>
+                                    <p class="text-[10px] text-base/60 uppercase tracking-widest mb-6">Per Month • One Trainer</p>
+                                    <p class="text-sm text-base/80 font-light leading-relaxed mb-8">
+                                        Elevate your wellness journey with consistent, mindful movement three days a week.
+                                    </p>
+                                </div>
+                                <div class="border-t border-brandSand/20 pt-4">
+                                    <p class="text-2xl font-serif text-base mb-1">Rs 30,000</p>
+                                    <p class="text-[10px] text-brandSand/70 uppercase tracking-widest mb-4">Monthly Subscription</p>
+                                    <a href="https://wa.me/923058852525?text=Hi,%20I%20want%20to%20enroll%20in%20the%2012%20Sessions/Month%20Program." class="block w-full text-center border border-brandSand/50 py-2 rounded-full text-xs text-brandSand uppercase tracking-widest hover:bg-brandSand hover:text-brandDark transition-colors">Select</a>
+                                </div>
+                            </div>
+
+                            <div class="membership-card w-[82vw] md:w-auto flex-shrink-0 snap-center bg-brandSand border border-brandBrown/20 rounded-2xl p-6 hover:bg-[#D0BEA4] transition-colors flex flex-col justify-between shadow-lg relative overflow-hidden">
+                                <div class="absolute top-3 right-3"><i class="ph-fill ph-star text-brandRose"></i></div>
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-serif text-2xl text-brandDark">03</h4>
+                                    </div>
+                                    <h5 class="text-brandDark font-extrabold text-lg mb-1 tracking-wide">16 SESSIONS</h5>
+                                    <p class="text-[10px] text-brandDark/70 uppercase tracking-widest mb-6 font-bold">Per Month • Two Trainers</p>
+                                    <p class="text-sm text-brandDark/90 font-medium leading-relaxed mb-8">
+                                        Immersive strength and yoga conditioning guided by two expert trainers for optimal form.
+                                    </p>
+                                </div>
+                                <div class="border-t border-brandDark/20 pt-4">
+                                    <p class="text-2xl font-serif text-brandDark mb-1 font-bold">Rs 40,000</p>
+                                    <p class="text-[10px] text-brandDark/70 uppercase tracking-widest mb-4 font-bold">Monthly Subscription</p>
+                                    <a href="https://wa.me/923058852525?text=Hi,%20I%20want%20to%20enroll%20in%20the%2016%20Sessions/Month%20Program." class="block w-full text-center border border-brandDark/40 py-2 rounded-full text-xs text-brandDark font-bold uppercase tracking-widest hover:bg-brandDark hover:text-brandSand transition-colors">Select</a>
+                                </div>
+                            </div>
+
+                            <div class="membership-card w-[82vw] md:w-auto flex-shrink-0 snap-center bg-gradient-to-br from-brandRose to-brandSand border border-brandDark/10 rounded-2xl p-6 hover:opacity-90 transition-opacity flex flex-col justify-between shadow-[0_10px_30px_rgba(232,138,159,0.4)]">
+                                <div>
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h4 class="font-serif text-2xl text-brandDark drop-shadow-sm">04</h4>
+                                    </div>
+                                    <h5 class="text-brandDark font-extrabold text-lg mb-1 tracking-wide">20 SESSIONS</h5>
+                                    <p class="text-[10px] text-brandDark/70 uppercase tracking-widest mb-6 font-bold">Per Month • Two Trainers</p>
+                                    <p class="text-sm text-brandDark/90 font-medium leading-relaxed mb-8">
+                                        The ultimate Sen'i transformation. Full dedication to your inner strength and mobility.
+                                    </p>
+                                </div>
+                                <div class="border-t border-brandDark/20 pt-4">
+                                    <p class="text-2xl font-serif text-brandDark mb-1 font-bold drop-shadow-sm">Rs 50,000</p>
+                                    <p class="text-[10px] text-brandDark/70 uppercase tracking-widest mb-4 font-bold">Monthly Subscription</p>
+                                    <a href="https://wa.me/923058852525?text=Hi,%20I%20want%20to%20enroll%20in%20the%2020%20Sessions/Month%20Program." class="block w-full text-center bg-brandDark py-2 rounded-full text-xs text-brandSand font-bold uppercase tracking-widest hover:bg-[#3A4232] transition-colors shadow-md">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-dots relative z-10" id="carousel-dots">
+                        <div class="dot active" data-index="0"></div>
+                        <div class="dot" data-index="1"></div>
+                        <div class="dot" data-index="2"></div>
+                        <div class="dot" data-index="3"></div>
                     </div>
                 </div>
             </section>
@@ -520,7 +561,7 @@
                                 <i class="ph-bold ph-caret-down text-brandSand faq-icon group-hover:text-brandRose transition-colors"></i>
                             </div>
                             <div class="faq-content px-5">
-                                <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Not at all. Our F-10 sanctuary provides everything required for your curated experience, including plush robes, comfortable slippers, and premium luxury toiletries. Just bring a desire to disconnect.</p>
+                                <p class="pb-5 text-[15px] text-brandBrown leading-relaxed">Not at all. Our sanctuary provides everything required for your curated experience, including plush robes, comfortable slippers, and premium luxury toiletries. Just bring a desire to disconnect.</p>
                             </div>
                         </div>
 
@@ -553,7 +594,7 @@
                     <div class="marquee-track" id="marqueeTrack">
                         <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
                             <div class="flex text-brandSand mb-4 text-sm"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-                            <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"A truly luxurious escape in F-10. The ambiance is incredibly peaceful, and the full body massage released all my work stress. Highly recommended!"</p>
+                            <p class="text-brandBrown italic mb-6 leading-relaxed text-[15px]">"A truly luxurious escape. The ambiance is incredibly peaceful, and the full body massage released all my work stress. Highly recommended!"</p>
                             <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-brandDark text-brandSand flex items-center justify-center font-serif text-xs">Z</div><div><p class="text-sm font-bold text-brandDark">Zainab Tariq</p><p class="text-[10px] text-brandBlush uppercase tracking-wider flex items-center gap-1">Islamabad</p></div></div>
                         </div>
                         <div class="marquee-card w-[350px] flex-shrink-0 p-8 bg-white rounded-xl border border-brandSand/40 hover:border-brandRose/50 hover:shadow-lg transition-all cursor-pointer select-none">
@@ -590,7 +631,7 @@
                         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brandBrown/40 rounded-full blur-[100px] pointer-events-none"></div>
                         
                         <div class="geo-tab-container">
-                            <div class="geo-tab active font-serif text-lg md:text-xl text-brandSand">Islamabad Club</div>
+                            <div class="geo-tab active font-serif text-lg md:text-xl text-brandSand">Islamabad Sanctuary</div>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10 mt-12">
@@ -599,12 +640,12 @@
                                     <h2 class="font-serif text-3xl md:text-4xl mb-4 text-base">Visit Our Sanctuary</h2>
                                     <div class="h-0.5 w-12 bg-brandSand opacity-50 mb-8"></div>
                                     <address class="space-y-4 font-light text-brandSand/90 not-italic">
-                                        <p class="flex items-start gap-4"><i class="ph-fill ph-map-pin text-brandRose text-xl mt-1"></i><span class="leading-relaxed">103 Street 22, F-10/2,<br>Islamabad, Pakistan.</span></p>
+                                        <p class="flex items-start gap-4"><i class="ph-fill ph-map-pin text-brandRose text-xl mt-1"></i><span class="leading-relaxed">F-8 Sector,<br>Islamabad, Pakistan.</span></p>
                                         <p class="flex items-start gap-4"><i class="ph-fill ph-clock text-brandRose text-xl mt-1"></i><span class="leading-relaxed">Mon - Fri: 12:30 PM - 8:30 PM<br>Sat - Sun: Closed</span></p>
                                         <p class="flex items-center gap-4"><i class="ph-fill ph-phone text-brandRose text-xl"></i><a href="tel:+923058852525">+92 305 8852525</a></p>
                                     </address>
                                     <div class="mt-8">
-                                        <a href="https://maps.app.goo.gl/iQCJh14aPW7eGXeU7" target="_blank" class="inline-flex items-center gap-2 border border-brandSand/40 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brandSand hover:text-brandDark hover:border-brandSand transition-all duration-300 outline-none">
+                                        <a href="https://www.google.com/maps/dir/?api=1&destination=33.689241,73.000084" target="_blank" class="inline-flex items-center gap-2 border border-brandSand/40 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-brandSand hover:text-brandDark hover:border-brandSand transition-all duration-300 outline-none">
                                             Get Directions <i class="ph-bold ph-arrow-right"></i>
                                         </a>
                                     </div>
@@ -612,7 +653,7 @@
                             </div>
                             
                             <div class="map-container-fix h-[350px] w-full rounded-2xl overflow-hidden border border-brandSand/20 shadow-lg relative bg-[#2a2a2a]">
-                                <iframe title="Location Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3319.7612466833475!2d72.99750907434341!3d33.68924583681284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf0010d13591%3A0xa15838e52b4d2675!2sSen'i%20Wellness%20Club!5e0!3m2!1sen!2s!4v1772078264549!5m2!1sen!2s" width="100%" height="100%" class="map-layer map-visible map-dark" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe title="Location Map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13277.69637715014!2d73.000084!3d33.689241!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbe6ebcf4b2db%3A0xc0fb89dcfd6e7f12!2sSen'i%20Wellness%20Club!5e0!3m2!1sen!2s!4v1740916688756!5m2!1sen!2s" width="100%" height="100%" class="map-layer map-visible map-dark" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
@@ -632,16 +673,19 @@
                     <h2 class="font-serif text-5xl sm:text-7xl md:text-[7rem] lg:text-[9rem] tracking-tighter font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#ffffff] via-[#DBC9B1] to-[#E88A9F] pb-2 leading-[0.8] text-center w-full drop-shadow-2xl">
                         Sen’i Wellness
                     </h2>
-                    <div class="w-full flex justify-center mt-6 md:mt-8">
+                    <div class="w-full flex justify-center mt-6 md:mt-8 gap-4">
                         <span class="text-brandSand/80 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] text-center border border-brandSand/30 px-6 py-2.5 rounded-full backdrop-blur-sm bg-brandDark/50">The Ultimate Sanctuary</span>
                     </div>
                 </div>
 
                 <div class="w-full flex flex-col md:flex-row justify-between items-center gap-6 relative z-20 pt-4 mt-2">
-                    <div>
-                        <p class="text-xs text-brandSand/80 font-medium">© 2026 Sen'i Wellness Club. All rights reserved.</p>
+                    <div class="flex items-center gap-4 text-xs text-brandSand/80 font-medium">
+                        <p>© 2026 Sen'i Wellness Club.</p>
+                        <span class="text-brandSand/40">|</span>
+                        <button onclick="document.getElementById('termsModal').classList.add('active')" class="hover:text-brandSand transition-colors uppercase tracking-wider underline underline-offset-4 decoration-brandSand/40">House Rules</button>
                     </div>
                     <div class="flex gap-6 items-center">
+                        <a href="mailto:info@clubseni.com" class="text-[#F9BDC6] hover:text-[#DBC9B1] transition-colors duration-300 outline-none"><i class="ph-fill ph-envelope-simple text-2xl drop-shadow-md"></i></a>
                         <a href="https://www.linkedin.com/in/anum-shahzeb/" target="_blank" class="text-[#F9BDC6] hover:text-[#DBC9B1] transition-colors duration-300 outline-none"><i class="ph-fill ph-linkedin-logo text-2xl drop-shadow-md"></i></a>
                         <a href="https://www.instagram.com/seniwellnessclubisb" target="_blank" class="text-[#F9BDC6] hover:text-[#DBC9B1] transition-colors duration-300 outline-none"><i class="ph-fill ph-instagram-logo text-2xl drop-shadow-md"></i></a>
                         <a href="https://wa.me/923058852525" target="_blank" class="text-[#F9BDC6] hover:text-[#DBC9B1] transition-colors duration-300 outline-none"><i class="ph-fill ph-whatsapp-logo text-2xl drop-shadow-md"></i></a>
@@ -649,6 +693,46 @@
                 </div>
             </div>
         </footer>
+    </div>
+
+    <div id="termsModal" class="modal-overlay">
+        <div class="modal-content relative text-brandDark">
+            <button onclick="document.getElementById('termsModal').classList.remove('active')" class="absolute top-4 right-4 text-brandBrown hover:text-brandRose transition-colors">
+                <i class="ph-bold ph-x text-2xl"></i>
+            </button>
+            <h2 class="font-serif text-3xl mb-2">Sen'i House Rules</h2>
+            <p class="text-[11px] uppercase tracking-widest text-brandSand font-bold mb-6">Exclusivity & Comfort</p>
+            
+            <ul class="space-y-4 text-sm text-brandBrown/90 leading-relaxed font-medium">
+                <li class="flex items-start gap-3">
+                    <i class="ph-fill ph-asterisk text-brandRose mt-1 text-xs"></i>
+                    A one-time, non-refundable membership fee of Rs. 25,000 applies.
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="ph-fill ph-asterisk text-brandRose mt-1 text-xs"></i>
+                    Membership privileges are non-transferable and only to be utilized by the registered member.
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="ph-fill ph-asterisk text-brandRose mt-1 text-xs"></i>
+                    Monthly subscriptions must be paid before the 10th of each month. Payments after the 10th incur a late fee of Rs. 500/day.
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="ph-fill ph-asterisk text-brandRose mt-1 text-xs"></i>
+                    In case of a no-call or no-show for 45 days for a class or service, your membership shall expire.
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="ph-fill ph-asterisk text-brandRose mt-1 text-xs"></i>
+                    Cancellation requests for any pre-booked services or classes must be made at least 3 hours in advance; otherwise, a cancellation fee of Rs 1,000 applies.
+                </li>
+                <li class="flex items-start gap-3">
+                    <i class="ph-fill ph-asterisk text-brandRose mt-1 text-xs"></i>
+                    No services/classes will be carried forward to the next month or refunded.
+                </li>
+            </ul>
+            <p class="mt-8 italic text-brandBrown text-center text-sm">
+                "As a community of like-minded women, believing in the practices of Wabi-Sabi - these house rules allow us to give you the exclusivity you deserve."
+            </p>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
@@ -659,6 +743,7 @@
         
         document.addEventListener('DOMContentLoaded', () => {
             
+            // --- Navigation & Menu Logic ---
             const menuBtn = document.getElementById('menu-btn');
             const menuIcon = document.getElementById('menu-icon');
             const menuBackdrop = document.getElementById('menu-backdrop');
@@ -685,11 +770,10 @@
             }
 
             menuBtn.addEventListener('click', toggleMenu);
-            menuBackdrop.addEventListener('click', (e) => {
-                if (e.target === menuBackdrop) toggleMenu(); 
-            });
+            menuBackdrop.addEventListener('click', (e) => { if (e.target === menuBackdrop) toggleMenu(); });
             menuLinks.forEach(link => { link.addEventListener('click', toggleMenu); });
 
+            // --- Scroll & GSAP Animations ---
             const initGSAP = () => {
                 if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
                     gsap.registerPlugin(ScrollTrigger);
@@ -710,13 +794,9 @@
                         navbar.classList.add('nav-transparent');
                         navbar.classList.remove('nav-scrolled');
                     }
-                    
                     if (mobileFab) {
-                        if (lastScrollY > window.innerHeight * 0.5) {
-                            mobileFab.classList.add('fab-visible');
-                        } else {
-                            mobileFab.classList.remove('fab-visible');
-                        }
+                        if (lastScrollY > window.innerHeight * 0.5) mobileFab.classList.add('fab-visible');
+                        else mobileFab.classList.remove('fab-visible');
                     }
                     ticking = false;
                 }
@@ -727,31 +807,19 @@
                 }, { passive: true });
 
                 ScrollTrigger.batch(".reveal-on-scroll", { start: "top 95%", onEnter: batch => gsap.to(batch, { y: 0, opacity: 1, duration: 1.2, ease: "power3.out", stagger: 0.15 }) });
-                
-                // Removed the rigid delay so the text paints instantly alongside the background
                 gsap.from(".hero-anim", { y: 30, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out" });
-                
-                gsap.to(".hero-bubble", { 
-                    scrollTrigger: { trigger: ".pb-12", start: "top 85%" }, 
-                    scale: 1, opacity: 1, filter: "blur(0px)", y: 0, duration: 1.2, stagger: 0.15, ease: "power2.out" 
-                });
+                gsap.to(".hero-bubble", { scrollTrigger: { trigger: ".pb-12", start: "top 85%" }, scale: 1, opacity: 1, filter: "blur(0px)", y: 0, duration: 1.2, stagger: 0.15, ease: "power2.out" });
                 gsap.to(".treatment-icon-anim", { scrollTrigger: { trigger: "#studios", start: "top 70%" }, y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power2.out" });
                 gsap.to("#journey-line", { height: "100%", ease: "none", scrollTrigger: { trigger: ".space-y-16", start: "top 70%", end: "bottom center", scrub: 1 } });
                 gsap.utils.toArray(".journey-step").forEach(step => { gsap.fromTo(step, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", scrollTrigger: { trigger: step, start: "top 90%" } }); });
             }
             initGSAP();
-
             ScrollTrigger.config({ ignoreMobileResize: true });
 
+            // --- Status Logic ---
             const date = new Date(); const utc = date.getTime() + (date.getTimezoneOffset() * 60000); const pkTime = new Date(utc + (3600000 * 5));
-            const hours = pkTime.getHours(); 
-            const minutes = pkTime.getMinutes();
-            const day = pkTime.getDay(); 
-            
-            const totalMinutes = (hours * 60) + minutes;
-            const openMinute = (12 * 60) + 30; 
-            const closeMinute = (20 * 60) + 30; 
-
+            const hours = pkTime.getHours(); const minutes = pkTime.getMinutes(); const day = pkTime.getDay(); 
+            const totalMinutes = (hours * 60) + minutes; const openMinute = (12 * 60) + 30; const closeMinute = (20 * 60) + 30; 
             const statusContainer = document.getElementById('shop-status'); const statusVal = document.getElementById('status-val');
             if (statusContainer) { 
                 statusContainer.style.opacity = "1"; 
@@ -760,6 +828,7 @@
                 if (isOpen) { statusVal.classList.add("status-text-open"); statusVal.classList.remove("status-text-closed"); } else { statusVal.classList.add("status-text-closed"); statusVal.classList.remove("status-text-open"); }
             }
 
+            // --- Desktop Tilt ---
             if (window.matchMedia('(hover: hover)').matches) {
                 document.querySelectorAll('.tilt-card').forEach(card => {
                     card.addEventListener('mousemove', (e) => { requestAnimationFrame(() => { const rect = card.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; const rotateX = ((y - rect.height/2) / rect.height/2) * -3; const rotateY = ((x - rect.width/2) / rect.width/2) * 3; card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`; }); });
@@ -769,22 +838,13 @@
 
             window.toggleFaq = function(element) { const isOpened = element.classList.contains('faq-open'); document.querySelectorAll('.faq-open').forEach(el => el.classList.remove('faq-open')); if (!isOpened) element.classList.add('faq-open'); }
 
+            // --- Infinite Marquee Logic (Testimonials) ---
             const marqueeContainer = document.getElementById('marqueeContainer');
             const marqueeTrack = document.getElementById('marqueeTrack');
-            
             if (marqueeContainer && marqueeTrack) {
                 const originalHTML = marqueeTrack.innerHTML;
                 marqueeTrack.innerHTML = originalHTML + originalHTML + originalHTML + originalHTML;
-                
-                let scrollPos = 0; 
-                let isDragging = false; 
-                let startX = 0; 
-                let currentTranslate = 0; 
-                let prevTranslate = 0; 
-                let animationID; 
-                let speed = 0.8;
-                let singleSetWidth = 0;
-                let lastTime = performance.now();
+                let scrollPos = 0, isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0, animationID, speed = 0.8, singleSetWidth = 0, lastTime = performance.now();
 
                 setTimeout(() => {
                     const cards = marqueeTrack.children;
@@ -796,57 +856,136 @@
                             if (deltaTime < 100) {
                                 const moveAmount = speed * (deltaTime / 16.6);
                                 scrollPos -= moveAmount; 
-                                if (scrollPos <= -singleSetWidth) { scrollPos += singleSetWidth; }
+                                if (scrollPos <= -singleSetWidth) scrollPos += singleSetWidth; 
                                 currentTranslate = scrollPos;
                                 marqueeTrack.style.transform = `translate3d(${currentTranslate.toFixed(2)}px, 0, 0)`; 
                             }
                         }
-                        lastTime = currentTime;
-                        animationID = requestAnimationFrame(animateMarquee);
+                        lastTime = currentTime; animationID = requestAnimationFrame(animateMarquee);
                     }
 
-                    marqueeContainer.addEventListener('mousedown', touchStart);
-                    marqueeContainer.addEventListener('touchstart', touchStart, {passive: true});
-                    marqueeContainer.addEventListener('mouseup', touchEnd);
-                    marqueeContainer.addEventListener('mouseleave', touchEnd);
-                    marqueeContainer.addEventListener('touchend', touchEnd);
-                    marqueeContainer.addEventListener('mousemove', touchMove);
-                    
-                    // Fixed {passive: false} to {passive: true} so it never blocks native vertical mobile scrolling
-                    marqueeContainer.addEventListener('touchmove', touchMove, {passive: true});
-
-                    function touchStart(event) {
-                        isDragging = true; 
-                        startX = getPositionX(event); 
-                        prevTranslate = currentTranslate; 
-                        marqueeContainer.style.cursor = 'grabbing';
-                    }
-
-                    function touchMove(event) {
+                    function touchStart(e) { isDragging = true; startX = getPositionX(e); prevTranslate = currentTranslate; marqueeContainer.style.cursor = 'grabbing'; }
+                    function touchMove(e) {
                         if (isDragging) {
-                            const currentPosition = getPositionX(event); 
-                            const currentDiff = currentPosition - startX; 
-                            currentTranslate = prevTranslate + currentDiff;
-                            
+                            const currentDiff = getPositionX(e) - startX; currentTranslate = prevTranslate + currentDiff;
                             if(currentTranslate > 0) currentTranslate -= singleSetWidth; 
                             if(currentTranslate < -singleSetWidth * 2) currentTranslate += singleSetWidth;
-                            
                             marqueeTrack.style.transform = `translate3d(${currentTranslate.toFixed(2)}px, 0, 0)`; 
                         }
                     }
+                    function touchEnd() { if (!isDragging) return; isDragging = false; scrollPos = currentTranslate; marqueeContainer.style.cursor = 'grab'; lastTime = performance.now(); }
+                    function getPositionX(e) { return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX; }
 
-                    function touchEnd() {
-                        if (!isDragging) return; 
-                        isDragging = false; 
-                        scrollPos = currentTranslate;
-                        marqueeContainer.style.cursor = 'grab'; 
-                        lastTime = performance.now();
-                    }
-
-                    function getPositionX(event) { return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX; }
-
+                    marqueeContainer.addEventListener('mousedown', touchStart); marqueeContainer.addEventListener('touchstart', touchStart, {passive: true});
+                    marqueeContainer.addEventListener('mouseup', touchEnd); marqueeContainer.addEventListener('mouseleave', touchEnd); marqueeContainer.addEventListener('touchend', touchEnd);
+                    marqueeContainer.addEventListener('mousemove', touchMove); marqueeContainer.addEventListener('touchmove', touchMove, {passive: true});
                     requestAnimationFrame(animateMarquee);
                 }, 150);
+            }
+
+            // --- THE MATHEMATICAL FIX: JUMP-FREE MEMBERSHIP CAROUSEL LOGIC ---
+            const memberTrack = document.getElementById('membership-track');
+            const dots = document.querySelectorAll('.carousel-dots .dot');
+            
+            if (memberTrack && dots.length > 0 && window.innerWidth < 768) {
+                let scrollInterval;
+                let resumeTimeout;
+                let isInteracting = false;
+                const cards = memberTrack.querySelectorAll('.membership-card');
+
+                // Update active dot naturally as user scrolls by checking which card is closest to the center
+                const updateActiveDot = () => {
+                    let activeIndex = 0;
+                    let minDiff = Infinity;
+                    const trackCenter = memberTrack.scrollLeft + (memberTrack.clientWidth / 2);
+                    
+                    cards.forEach((card, index) => {
+                        const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+                        const diff = Math.abs(trackCenter - cardCenter);
+                        if (diff < minDiff) {
+                            minDiff = diff;
+                            activeIndex = index;
+                        }
+                    });
+                    
+                    dots.forEach(d => d.classList.remove('active'));
+                    if (dots[activeIndex]) dots[activeIndex].classList.add('active');
+                };
+
+                memberTrack.addEventListener('scroll', updateActiveDot, { passive: true });
+
+                // Dot Click Logic - Uses precise pixel math, NO scrollIntoView to prevent page jumping
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        pauseAutoScroll(); 
+                        
+                        const cardElement = cards[index];
+                        const centerPos = cardElement.offsetLeft - (memberTrack.clientWidth / 2) + (cardElement.offsetWidth / 2);
+                        memberTrack.scrollTo({ left: centerPos, behavior: 'smooth' });
+                        
+                        resumeAutoScrollAfterDelay(); 
+                    });
+                });
+
+                const startAutoScroll = () => {
+                    clearInterval(scrollInterval);
+                    scrollInterval = setInterval(() => {
+                        if (isInteracting) return;
+                        
+                        // Prevent auto-scroll if section is completely off-screen to save battery
+                        const rect = memberTrack.getBoundingClientRect();
+                        if (rect.top > window.innerHeight || rect.bottom < 0) return;
+
+                        // Find current active index
+                        let activeIndex = 0;
+                        let minDiff = Infinity;
+                        const trackCenter = memberTrack.scrollLeft + (memberTrack.clientWidth / 2);
+                        
+                        cards.forEach((card, index) => {
+                            const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
+                            const diff = Math.abs(trackCenter - cardCenter);
+                            if (diff < minDiff) {
+                                minDiff = diff;
+                                activeIndex = index;
+                            }
+                        });
+
+                        let nextIndex = activeIndex + 1;
+                        
+                        // THE FIX: If we are at the last card, perfectly loop back to the first card
+                        if (nextIndex >= cards.length) {
+                            memberTrack.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else {
+                            const nextCard = cards[nextIndex];
+                            const scrollPos = nextCard.offsetLeft - (memberTrack.clientWidth / 2) + (nextCard.offsetWidth / 2);
+                            memberTrack.scrollTo({ left: scrollPos, behavior: 'smooth' });
+                        }
+                    }, 3500); // Wait 3.5 seconds per card
+                };
+
+                const pauseAutoScroll = () => {
+                    isInteracting = true;
+                    clearInterval(scrollInterval);
+                    clearTimeout(resumeTimeout);
+                };
+
+                const resumeAutoScrollAfterDelay = () => {
+                    clearTimeout(resumeTimeout);
+                    // Wait exactly 3 seconds after you stop touching before the auto-scroll restarts
+                    resumeTimeout = setTimeout(() => {
+                        isInteracting = false;
+                        startAutoScroll();
+                    }, 3000); 
+                };
+
+                // Listeners for Hover and Touch to completely halt auto-scrolling
+                memberTrack.addEventListener('touchstart', pauseAutoScroll, { passive: true });
+                memberTrack.addEventListener('touchend', resumeAutoScrollAfterDelay, { passive: true });
+                memberTrack.addEventListener('mouseenter', pauseAutoScroll);
+                memberTrack.addEventListener('mouseleave', resumeAutoScrollAfterDelay);
+
+                // Initialize the auto-scroll loop
+                startAutoScroll();
             }
         });
     </script>
